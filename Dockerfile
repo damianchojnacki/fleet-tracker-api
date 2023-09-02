@@ -15,7 +15,6 @@ RUN sudo apt-get update -y && \
     sudo apt-get autoremove -y
 
 COPY --chown=docker:docker . /var/www/html
-COPY --from=node --chown=docker:docker /usr/src/app/public/build /var/www/html/public/build
 
 RUN composer install --no-interaction --optimize-autoloader
 RUN php artisan storage:link
