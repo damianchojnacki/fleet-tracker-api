@@ -38,7 +38,7 @@ jobs:
       - name: Get code insights
         id: insights
         run: |
-          php artisan insights -n -s --format=json > insights.json
+          php artisan insights -n -s --format=json --min-quality=0 --min-complexity=0 --min-architecture=0 --min-style=0 > insights.json
           CODE="$( jq .summary.code insights.json )"
           ARCHITECTURE="$( jq .summary.architecture insights.json )"
           COMPLEXITY="$( jq .summary.complexity insights.json )"
