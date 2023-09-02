@@ -59,14 +59,14 @@ jobs:
         run: php artisan storage:link
       - name: Static analysis
         run: ./vendor/bin/phpstan analyse --error-format github --ansi --no-progress
+      - name: Code insights
+        run: php artisan insights -n --ansi -s --format=github-action
       - name: Execute tests
         id: execute_tests
         run: |
           XDEBUG_MODE=coverage php artisan test -p --coverage
           COVERAGE="$( awk -F '[:.%]' '/Summary:/ {getline; getline; getline; print $2}' coverage.txt )"
           echo "coverage=${COVERAGE}" >> $GITHUB_OUTPUT
-      - name: Code insights
-        run: php artisan insights -n --ansi -s --format=github-action
 #      - uses: ravsamhq/notify-slack-action@v2
 #        if: always()
 #        with:
