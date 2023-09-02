@@ -11,12 +11,21 @@
         <testsuite name="Feature">
             <directory>tests/Feature</directory>
         </testsuite>
+        <testsuite name="Teacher">
+            <directory>app/Modules/Teacher/Tests</directory>
+        </testsuite>
     </testsuites>
-    <source>
+    <coverage processUncoveredFiles="true">
         <include>
-            <directory>app</directory>
+            <directory suffix=".php">./app</directory>
         </include>
-    </source>
+        <exclude>
+            <directory suffix=".php">./app/Filament</directory>
+        </exclude>
+        <report>
+            <text outputFile="coverage.txt" />
+        </report>
+    </coverage>
     <php>
         <env name="APP_ENV" value="testing"/>
         <env name="BCRYPT_ROUNDS" value="4"/>
@@ -24,7 +33,10 @@
         <env name="DB_DATABASE" value="testing"/>
         <env name="MAIL_MAILER" value="array"/>
         <env name="QUEUE_CONNECTION" value="sync"/>
+        <env name="BROADCAST_DRIVER" value="log"/>
+        <env name="MAIL_MAILER" value="log"/>
         <env name="SESSION_DRIVER" value="array"/>
         <env name="TELESCOPE_ENABLED" value="false"/>
+        <env name="SITE_PROTECTION_PASSWORDS" value=""/>
     </php>
 </phpunit>
