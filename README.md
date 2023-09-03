@@ -1,8 +1,8 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
-<a href="https://github.com/damianchojnacki/fleet-tracker-api/actions/workflows/tests.yml">
-<img src="https://github.com/damianchojnacki/fleet-tracker-api/actions/workflows/tests.yml/badge.svg" alt="Test Status">
+<a href="https://github.com/damianchojnacki/fleet-tracker-api/actions/workflows/test.yml">
+<img src="https://github.com/damianchojnacki/fleet-tracker-api/actions/workflows/test.yml/badge.svg" alt="Test Status">
 </a>
 <a href="https://github.com/damianchojnacki/fleet-tracker-api/actions/workflows/deploy.yml">
 <img src="https://github.com/damianchojnacki/fleet-tracker-api/actions/workflows/deploy.yml/badge.svg" alt="Deploy Status">
