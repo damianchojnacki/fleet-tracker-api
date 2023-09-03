@@ -1,66 +1,89 @@
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
 <p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+<a href="https://github.com/damianchojnacki/fleet-tracker-api/actions/workflows/tests.yml">
+<img src="https://github.com/damianchojnacki/fleet-tracker-api/actions/workflows/tests.yml/badge.svg" alt="Test Status">
+</a>
+<a href="https://github.com/damianchojnacki/fleet-tracker-api/actions/workflows/deploy.yml">
+<img src="https://github.com/damianchojnacki/fleet-tracker-api/actions/workflows/deploy.yml/badge.svg" alt="Deploy Status">
+</a>
+<br>
+<a href="https://github.com/damianchojnacki/fleet-tracker-api/actions/workflows/tests.yml">
+<img src="https://github.com/damianchojnacki/fleet-tracker-api/raw/badges/main/coverage.svg" alt="Code Coverage">
+</a>
+<a href="https://github.com/damianchojnacki/fleet-tracker-api/actions/workflows/insights.yml">
+<img src="https://github.com/damianchojnacki/fleet-tracker-api/raw/badges/main/insights-code.svg" alt="Code Quality">
+</a>
+<a href="https://github.com/damianchojnacki/fleet-tracker-api/actions/workflows/insights.yml">
+<img src="https://github.com/damianchojnacki/fleet-tracker-api/raw/badges/main/insights-architecture.svg" alt="Code Architecture">
+</a>
+<a href="https://github.com/damianchojnacki/fleet-tracker-api/actions/workflows/insights.yml">
+<img src="https://github.com/damianchojnacki/fleet-tracker-api/raw/badges/main/insights-complexity.svg" alt="Code Complexity">
+</a>
+<a href="https://github.com/damianchojnacki/fleet-tracker-api/actions/workflows/insights.yml">
+<img src="https://github.com/damianchojnacki/fleet-tracker-api/raw/badges/main/insights-style.svg" alt="Code Style">
+</a>
 </p>
 
-## About Laravel
+## About Fleet Tracker API
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Setup
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Use the following commands to setup the project:
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+```shell
+chmod +x setup.sh
+./setup.sh
+```
 
-## Learning Laravel
+Optionally you can follow the official [Laravel installation guide](https://laravel.com/docs/10.x/installation).
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+By default, database use temporary filesystem (that wipes up data every reboot) to speed up the development. 
+To use persistence database, you can must comment the following lines in the end of `docker-compose.yml` file:
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+```yaml
+driver_opts:
+    o: bind
+    type: none
+    device: '/dev/shm'
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Usage
 
-## Laravel Sponsors
+Run the following command to start the development server and other services such as database, redis etc.:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+```shell
+sail up -d
+```
 
-### Premium Partners
+To stop the development server and other services, run the following command:
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+```shell
+sail down
+```
 
-## Contributing
+or to stop the development server, run the following command:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```shell
+sail stop
+```
 
-## Code of Conduct
+To start the frontend development server run the following command:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```shell
+sail npm run dev
+```
 
-## Security Vulnerabilities
+Please refer to official Laravel documentation for more information about [Sail](https://laravel.com/docs/10.x/sail).
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+### Generating documentation
+
+Documentation is generated using [phpDocumentor](https://www.phpdoc.org/). To generate documentation, run the following command:
+
+```shell
+./generate_docs.sh
+```
 
 ## License
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+The TalkTango is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
