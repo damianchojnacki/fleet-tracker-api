@@ -86,4 +86,4 @@ Documentation is generated using [phpDocumentor](https://www.phpdoc.org/). To ge
 
 ## License
 
-The TalkTango is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+The Fleet Tracker API is open source software licensed under the [GPL 3.0 license](https://opensource.org/license/gpl-3-0/).

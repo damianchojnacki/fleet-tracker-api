@@ -2,26 +2,32 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Car;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class UserSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      */
     public function run(): void
     {
-         User::factory(10)->create();
+         $cars = Car::all();
+
+         User::factory(10)->recycle($cars)->create();
 
          User::factory()->create([
-             'name' => 'Test User',
+             'car_id' => null,
+             'firstname' => 'Test',
+             'lastname' => 'User',
              'email' => 'user@example.com',
          ]);
 
         User::factory()->create([
-            'name' => 'Test Admin',
+            'car_id' => null,
+            'firstname' => 'Test',
+            'lastname' => 'Admin',
             'email' => 'admin@example.com',
             'is_admin' => true,
         ]);
