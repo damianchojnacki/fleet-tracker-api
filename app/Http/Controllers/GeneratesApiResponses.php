@@ -9,23 +9,26 @@ trait GeneratesApiResponses
 {
     protected int $statusCode = 200;
 
+    /**
+     * @var array<string, string>
+     */
     protected array $headers = [];
 
-    protected function setStatusCode($code): self
+    protected function setStatusCode(int $code): self
     {
         $this->statusCode = $code;
 
         return $this;
     }
 
-    protected function json($data = []): JsonResponse
+    protected function json(mixed $data = []): JsonResponse
     {
         if ($data instanceof Collection) {
             $data = $data->toArray();
         }
 
-        if (is_array($data) && !array_key_exists('data', $data ?? [])) {
-            $data = ['data' => $data ?? []];
+        if (is_array($data) && !array_key_exists('data', $data)) {
+            $data = ['data' => $data];
         }
 
         return response()->json(
@@ -35,7 +38,7 @@ trait GeneratesApiResponses
         );
     }
 
-    protected function jsonPlain($data): JsonResponse
+    protected function jsonPlain(mixed $data): JsonResponse
     {
         return response()->json(
             $data,
@@ -44,28 +47,28 @@ trait GeneratesApiResponses
         );
     }
 
-    protected function ok($data = []): JsonResponse
+    protected function ok(mixed $data = []): JsonResponse
     {
         return $this
             ->setStatusCode(200)
             ->json($data);
     }
 
-    protected function created($data = []): JsonResponse
+    protected function created(mixed $data = []): JsonResponse
     {
         return $this
             ->setStatusCode(201)
             ->json($data);
     }
 
-    protected function noContent($data = []): JsonResponse
+    protected function noContent(mixed $data = []): JsonResponse
     {
         return $this
             ->setStatusCode(204)
             ->json($data);
     }
 
-    protected function badRequest($data = []): JsonResponse
+    protected function badRequest(mixed $data = []): JsonResponse
     {
         return $this
             ->setStatusCode(400)
@@ -93,7 +96,7 @@ trait GeneratesApiResponses
             ->json();
     }
 
-    protected function invalidInput($data = []): JsonResponse
+    protected function invalidInput(mixed $data = []): JsonResponse
     {
         return $this
             ->setStatusCode(422)
