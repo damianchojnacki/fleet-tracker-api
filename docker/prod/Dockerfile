@@ -19,7 +19,6 @@ COPY . /var/www/html
 
 RUN composer install --optimize-autoloader --no-dev \
     && mkdir -p storage/logs \
-    && touch storage/database/database.sqlite \
     && php artisan optimize:clear \
     && chown -R www-data:www-data /var/www/html \
     && sed -i 's/protected \$proxies/protected \$proxies = "*"/g' app/Http/Middleware/TrustProxies.php \
