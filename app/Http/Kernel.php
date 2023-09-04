@@ -47,7 +47,7 @@ class Kernel extends HttpKernel
         'user' => [
             'web',
             'auth:sanctum',
-            \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+            'verified',
         ],
     ];
 
