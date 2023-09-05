@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Traits\HasOrganization;
 use Filament\Models\Contracts\FilamentUser;
 use Filament\Panel;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -26,7 +27,7 @@ use Laravel\Sanctum\HasApiTokens;
  */
 class User extends Authenticatable implements FilamentUser, MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, HasOrganization;
 
     /**
      * The attributes that should be hidden for serialization.

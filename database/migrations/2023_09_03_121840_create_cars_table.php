@@ -2,6 +2,7 @@
 
 use App\Models\CarBrand;
 use App\Models\CarModel;
+use App\Models\Organization;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -17,6 +18,7 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(CarModel::class, 'model_id')->constrained('car_models')->cascadeOnDelete();
             $table->foreignIdFor(CarBrand::class, 'brand_id')->constrained('car_brands')->cascadeOnDelete();
+            $table->foreignIdFor(Organization::class)->constrained()->cascadeOnDelete();
             $table->string('plate_number')->nullable();
             $table->string('vin')->nullable();
             $table->boolean('is_active')->default(true);

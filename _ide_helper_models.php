@@ -22,7 +22,9 @@ namespace App\Models{
  * @property Carbon $updated_at
  * @property int $model_id
  * @property int $brand_id
+ * @property int $organization_id
  * @property-read \App\Models\CarBrand $brand
+ * @property-read \App\Models\CarModel $model
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\User> $users
  * @property-read int|null $users_count
  * @method static \Database\Factories\CarFactory factory($count = null, $state = [])
@@ -69,6 +71,45 @@ namespace App\Models{
 
 namespace App\Models{
 /**
+ * App\Models\Organization
+ *
+ * @property int $id
+ * @property int $owner_id
+ * @property string $name
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\OrganizationInvitation> $invitations
+ * @property-read int|null $invitations_count
+ * @property-read \App\Models\User $owner
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\User> $users
+ * @property-read int|null $users_count
+ * @method static \Database\Factories\OrganizationFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder|Organization newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Organization newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Organization query()
+ */
+	class Organization extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\OrganizationInvitation
+ *
+ * @property int $id
+ * @property int $organization_id
+ * @property string $email
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Organization $organization
+ * @method static \Illuminate\Database\Eloquent\Builder|OrganizationInvitation newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|OrganizationInvitation newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|OrganizationInvitation query()
+ */
+	class OrganizationInvitation extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
  * App\Models\Trip
  *
  * @property int $id
@@ -103,11 +144,14 @@ namespace App\Models{
  * @property string $remember_token
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
+ * @property int|null $organization_id
  * @property string $firstname
  * @property string $lastname
  * @property-read \App\Models\Car|null $car
  * @property-read \Illuminate\Notifications\DatabaseNotificationCollection<int, \Illuminate\Notifications\DatabaseNotification> $notifications
  * @property-read int|null $notifications_count
+ * @property-read \App\Models\Organization|null $organization
+ * @property-read \App\Models\Organization|null $ownedOrganization
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \Laravel\Sanctum\PersonalAccessToken> $tokens
  * @property-read int|null $tokens_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Trip> $trips

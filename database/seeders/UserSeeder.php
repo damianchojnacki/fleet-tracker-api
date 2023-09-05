@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Car;
+use App\Models\Organization;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -13,9 +14,8 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-         $cars = Car::all();
-
-         User::factory(10)->recycle($cars)->create();
+         User::factory(20)
+             ->create();
 
          User::factory()->create([
              'car_id' => null,
