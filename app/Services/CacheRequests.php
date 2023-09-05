@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Services\ApiNinjas;
+namespace App\Services;
 
 use Illuminate\Support\Facades\Cache;
 
 trait CacheRequests
 {
-    protected function cache(string $path, callable $callback)
+    protected function cache(string $path, callable $callback): mixed
     {
         return Cache::rememberForever($path, fn() => $callback($path));
     }

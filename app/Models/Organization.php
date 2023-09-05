@@ -27,6 +27,7 @@ class Organization extends Model
      */
     public function allUsers(): Collection
     {
+        /** @phpstan-ignore-next-line */
         return $this->users->merge([$this->owner]);
     }
 

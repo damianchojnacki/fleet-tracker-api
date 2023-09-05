@@ -3,6 +3,7 @@
 namespace App\Services\ApiNinjas;
 
 use App\Services\ApiNinjas\Structs\CarStruct;
+use App\Services\CacheRequests;
 use Illuminate\Support\Collection;
 
 class Cars implements CarApi

@@ -32,6 +32,11 @@ class AcceptOrganizationInvitationRequest extends FormRequest
         ];
     }
 
+    /**
+     * Get the validation rules that apply after the main rules pass.
+     *
+     * @return array<callable>
+     */
     public function after(): array
     {
         return [

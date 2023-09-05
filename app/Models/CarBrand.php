@@ -30,8 +30,11 @@ class CarBrand extends Model
         return Storage::path('car-brands.json');
     }
 
+    /**
+     * @return array{id: int, name: string}|array<never>
+     */
     public function getRows(): array
     {
-        return Storage::json('car-brands.json');
+        return Storage::json('car-brands.json') ?? [];
     }
 }
