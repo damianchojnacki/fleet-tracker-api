@@ -16,9 +16,6 @@ class UserCarControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-    /**
-     * @test
-     */
     public function testUpdatesUserCar(): void
     {
         $organization = Organization::factory()->create();

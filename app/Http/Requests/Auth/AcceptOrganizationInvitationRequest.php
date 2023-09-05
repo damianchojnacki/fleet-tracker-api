@@ -36,7 +36,7 @@ class AcceptOrganizationInvitationRequest extends FormRequest
     {
         return [
             function (Validator $validator) {
-                if ($this->organization->hasUserWithEmail($this->email)) {
+                if ($this->invitation->organization->hasUserWithEmail($this->email)) {
                     $validator->errors()->add(
                         'email',
                         __('This user already belongs to the team.')
