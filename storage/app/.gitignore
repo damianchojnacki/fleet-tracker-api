@@ -3,3 +3,4 @@
 !docs/**
 !public/
 !.gitignore
+!car-brands.json

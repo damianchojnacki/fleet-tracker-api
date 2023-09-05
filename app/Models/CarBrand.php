@@ -2,9 +2,10 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Storage;
+use Sushi\Sushi;
 
 /**
  * @property int $id
@@ -12,22 +13,25 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  */
 class CarBrand extends Model
 {
-    use HasFactory;
-
-    /**
-     * Indicates if the model should be timestamped.
-     *
-     * @var bool
-     */
-    public $timestamps = false;
-
-    public function models(): HasMany
-    {
-        return $this->hasMany(Model::class);
-    }
+    use Sushi;
 
     public function cars(): HasMany
     {
         return $this->hasMany(Car::class);
+    }
+
+    protected function sushiShouldCache(): bool
+    {
+        return true;
+    }
+
+    protected function sushiCacheReferencePath(): string
+    {
+        return Storage::path('car-brands.json');
+    }
+
+    public function getRows(): array
+    {
+        return Storage::json('car-brands.json');
     }
 }

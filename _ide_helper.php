@@ -4,7 +4,7 @@
 
 /**
  * A helper file for Laravel, to provide autocomplete information to your IDE
- * Generated for Laravel 10.21.0.
+ * Generated for Laravel 10.21.1.
  *
  * This file should not be included in your code, only analyzed by your IDE!
  *
@@ -18386,7 +18386,38 @@
      
 }
 
-        namespace Livewire { 
+        namespace App\Services\ApiNinjas { 
+            /**
+     * 
+     *
+     */ 
+        class ApiNinjasFacade {
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function validateConfig()
+        {
+                        /** @var \App\Services\ApiNinjas\Client $instance */
+                        return $instance->validateConfig();
+        }
+                    /**
+         * 
+         *
+         * @static 
+         */ 
+        public static function cars()
+        {
+                        /** @var \App\Services\ApiNinjas\Client $instance */
+                        return $instance->cars();
+        }
+         
+    }
+     
+}
+
+    namespace Livewire { 
             /**
      * 
      *
@@ -25691,6 +25722,7 @@ namespace  {
             class Validator extends \Illuminate\Support\Facades\Validator {}
             class View extends \Illuminate\Support\Facades\View {}
             class Vite extends \Illuminate\Support\Facades\Vite {}
+            class ApiNinjas extends \App\Services\ApiNinjas\ApiNinjasFacade {}
             class Livewire extends \Livewire\Livewire {}
             class Flare extends \Spatie\LaravelIgnition\Facades\Flare {}
      

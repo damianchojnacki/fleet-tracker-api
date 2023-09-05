@@ -3,7 +3,6 @@
 namespace Database\Factories;
 
 use App\Models\CarBrand;
-use App\Models\CarModel;
 use App\Models\Organization;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
@@ -25,8 +24,7 @@ class CarFactory extends Factory
     {
         return [
             'organization_id' => Organization::factory(),
-            'model_id' => CarModel::factory(),
-            'brand_id' => CarBrand::factory(),
+            'brand_id' => CarBrand::inRandomOrder()->first()?->id,
             'plate_number' => Str::upper(dechex(rand(11, 15)) . dechex(rand(11, 15)) . bin2hex(random_bytes(3))),
             'vin' => rand(10000000000000000, 99999999999999999),
             'is_active' => $this->faker->boolean,

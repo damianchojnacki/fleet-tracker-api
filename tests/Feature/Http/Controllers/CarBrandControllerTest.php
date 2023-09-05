@@ -14,20 +14,18 @@ class CarBrandControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function shouldListCarBrands(): void
+    public function testListsCarBrands(): void
     {
-        CarBrand::factory()->count(3)->create();
-
         $response = $this->getJson(route('brands.index'))
             ->assertSuccessful();
 
         $this->assertNotNull($response->json());
-        $this->assertCount(3, $response->json());
+        $this->assertCount(CarBrand::count(), $response->json());
     }
 
-    public function shouldShowCarBrand(): void
+    public function testShowsCarBrand(): void
     {
-        $brand = CarBrand::factory()->create();
+        $brand = CarBrand::first();
 
         $response = $this->getJson(route('brands.show', $brand))
             ->assertSuccessful();

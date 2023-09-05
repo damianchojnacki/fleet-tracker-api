@@ -172,6 +172,7 @@ return [
         App\Providers\Filament\AdminPanelProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\TelescopeServiceProvider::class,
+        App\Services\ApiNinjas\ApiNinjasServiceProvider::class
     ])->toArray(),
 
     /*
@@ -186,7 +187,7 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
-        // 'Example' => App\Facades\Example::class,
+        'ApiNinjas' => App\Services\ApiNinjas\ApiNinjasFacade::class,
     ])->toArray(),
 
 ];

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\Auth\ShowCarRequest;
+use App\Http\Requests\ShowCarRequest;
 use App\Http\Resources\CarResource;
 use App\Models\Car;
 use Illuminate\Database\Eloquent\Builder;
@@ -14,7 +14,7 @@ class CarController extends Controller
     public function index(Request $request): JsonResponse
     {
         $cars = Car::whereHas('organization', fn(Builder $q) =>
-            $q->where('id', $request->user()->organization->id)
+            $q->where('id', $request->user()?->organization?->id)
         )->get();
 
         return $this->ok(
@@ -24,7 +24,7 @@ class CarController extends Controller
 
     public function show(ShowCarRequest $request, Car $car): JsonResponse
     {
-        $car->load(['brand', 'model']);
+        $car->load(['brand']);
 
         return $this->ok(
             new CarResource($car)

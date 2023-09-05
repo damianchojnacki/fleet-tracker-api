@@ -3,6 +3,8 @@
 namespace Tests\Feature\Http\Controllers;
 
 use App\Models\Car;
+use App\Models\Organization;
+use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -16,11 +18,18 @@ class CarControllerTest extends TestCase
     /**
      * @test
      */
-    public function shouldListCars(): void
+    public function testListsCars(): void
     {
-        Car::factory()->count(3)->create();
+        $organization = Organization::factory()->create();
 
-        $response = $this->getJson(route('cars.index'))
+        $user = User::factory()->create([
+            'organization_id' => $organization->id,
+        ]);
+
+        Car::factory()->recycle($organization)->count(3)->create();
+
+        $response = $this->actingAs($user)
+            ->getJson(route('cars.index'))
             ->assertSuccessful();
 
         $this->assertNotNull($response->json());
@@ -31,11 +40,18 @@ class CarControllerTest extends TestCase
     /**
      * @test
      */
-    public function shouldShowCar(): void
+    public function testShowsCar(): void
     {
-        $car = Car::factory()->create();
+        $organization = Organization::factory()->create();
 
-        $response = $this->getJson(route('cars.show', $car))
+        $user = User::factory()->create([
+            'organization_id' => $organization->id,
+        ]);
+
+        $car = Car::factory()->recycle($organization)->create();
+
+        $response = $this->actingAs($user)
+            ->getJson(route('cars.show', $car))
             ->assertSuccessful();
 
         $this->assertNotNull($response->json());

@@ -14,7 +14,7 @@ class CarPolicy
      */
     public function view(User $user, Car $car): bool
     {
-        return $user->organization->id == $car->organization->id;
+        return $user->organization?->id == $car->organization->id;
     }
 
     /**
@@ -22,6 +22,6 @@ class CarPolicy
      */
     public function associate(User $user, Car $car): bool
     {
-        return $user->organization->id == $car->organization->id;
+        return $user->organization?->id == $car->organization->id;
     }
 }

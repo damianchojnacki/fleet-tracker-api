@@ -24,7 +24,6 @@ class CarResource extends JsonResource
             'vin' => $this->vin,
             'is_active' => $this->is_active,
             'brand' => new CarBrandResource($this->whenLoaded('brand')),
-            'model' => new CarModelResource($this->whenLoaded('model')),
         ];
     }
 }

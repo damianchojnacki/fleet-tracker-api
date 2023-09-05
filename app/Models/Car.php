@@ -25,13 +25,13 @@ class Car extends Model
         return $this->hasMany(User::class);
     }
 
-    public function model(): BelongsTo
-    {
-        return $this->belongsTo(CarModel::class, 'model_id');
-    }
-
     public function brand(): BelongsTo
     {
         return $this->belongsTo(CarBrand::class, 'brand_id');
+    }
+
+    public function organization(): BelongsTo
+    {
+        return $this->belongsTo(Organization::class);
     }
 }

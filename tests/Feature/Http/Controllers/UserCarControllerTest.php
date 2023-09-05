@@ -3,8 +3,10 @@
 namespace Tests\Feature\Http\Controllers;
 
 use App\Models\Car;
+use App\Models\Organization;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
 
 /**
@@ -17,10 +19,15 @@ class UserCarControllerTest extends TestCase
     /**
      * @test
      */
-    public function shouldUpdateUserCar(): void
+    public function testUpdatesUserCar(): void
     {
-        $user = User::factory()->create();
-        $car = Car::factory()->create();
+        $organization = Organization::factory()->create();
+
+        $user = User::factory()->create([
+            'organization_id' => $organization->id,
+        ]);
+
+        $car = Car::factory()->recycle($organization)->create();
 
         $this->actingAs($user)
             ->putJson(route('user.cars.update', [
