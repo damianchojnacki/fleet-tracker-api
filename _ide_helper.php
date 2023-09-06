@@ -16930,6 +16930,19 @@
         {
                         \Illuminate\Routing\UrlGenerator::flushMacros();
         }
+                    /**
+         * 
+         *
+         * @see \App\Providers\AppServiceProvider::register()
+         * @param string $route
+         * @param array $attributes
+         * @param \Carbon\Carbon|null $expiration
+         * @static 
+         */ 
+        public static function signature($route, $attributes = [], $expiration = null)
+        {
+                        return \Illuminate\Routing\UrlGenerator::signature($route, $attributes, $expiration);
+        }
          
     }
             /**
@@ -19549,6 +19562,48 @@
      
 }
 
+    namespace Illuminate\Routing { 
+            /**
+     * 
+     *
+     */ 
+        class UrlGenerator {
+                    /**
+         * 
+         *
+         * @see \App\Providers\AppServiceProvider::register()
+         * @param string $route
+         * @param array $attributes
+         * @param \Carbon\Carbon|null $expiration
+         * @static 
+         */ 
+        public static function signature($route, $attributes = [], $expiration = null)
+        {
+                        return \Illuminate\Routing\UrlGenerator::signature($route, $attributes, $expiration);
+        }
+         
+    }
+            /**
+     * 
+     *
+     */ 
+        class Route {
+                    /**
+         * 
+         *
+         * @see \Livewire\Features\SupportLazyLoading\SupportLazyLoading::registerRouteMacro()
+         * @param mixed $enabled
+         * @static 
+         */ 
+        public static function lazy($enabled = true)
+        {
+                        return \Illuminate\Routing\Route::lazy($enabled);
+        }
+         
+    }
+     
+}
+
     namespace Livewire\Features\SupportTesting { 
             /**
      * 
@@ -21203,28 +21258,6 @@
         public static function assertTableColumnSummarizerExists($columnName, $summarizerId)
         {
                         return \Livewire\Features\SupportTesting\Testable::assertTableColumnSummarizerExists($columnName, $summarizerId);
-        }
-         
-    }
-     
-}
-
-    namespace Illuminate\Routing { 
-            /**
-     * 
-     *
-     */ 
-        class Route {
-                    /**
-         * 
-         *
-         * @see \Livewire\Features\SupportLazyLoading\SupportLazyLoading::registerRouteMacro()
-         * @param mixed $enabled
-         * @static 
-         */ 
-        public static function lazy($enabled = true)
-        {
-                        return \Illuminate\Routing\Route::lazy($enabled);
         }
          
     }

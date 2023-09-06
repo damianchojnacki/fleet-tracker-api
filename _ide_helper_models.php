@@ -20,11 +20,11 @@ namespace App\Models{
  * @property bool $is_active
  * @property Carbon $created_at
  * @property Carbon $updated_at
- * @property int $model_id
  * @property int $brand_id
  * @property int $organization_id
- * @property-read \App\Models\CarBrand $brand
- * @property-read \App\Models\CarModel $model
+ * @property array $specs
+ * @property-read \App\Models\CarBrand|null $brand
+ * @property-read \App\Models\Organization $organization
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\User> $users
  * @property-read int|null $users_count
  * @method static \Database\Factories\CarFactory factory($count = null, $state = [])
@@ -43,30 +43,11 @@ namespace App\Models{
  * @property string $name
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Car> $cars
  * @property-read int|null $cars_count
- * @method static \Database\Factories\CarBrandFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|CarBrand newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|CarBrand newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|CarBrand query()
  */
 	class CarBrand extends \Eloquent {}
-}
-
-namespace App\Models{
-/**
- * App\Models\CarModel
- *
- * @property int $id
- * @property string $name
- * @property int $brand_id
- * @property-read \App\Models\CarBrand $brand
- * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Car> $cars
- * @property-read int|null $cars_count
- * @method static \Database\Factories\CarModelFactory factory($count = null, $state = [])
- * @method static \Illuminate\Database\Eloquent\Builder|CarModel newModelQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|CarModel newQuery()
- * @method static \Illuminate\Database\Eloquent\Builder|CarModel query()
- */
-	class CarModel extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -101,6 +82,7 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read \App\Models\Organization $organization
+ * @method static \Database\Factories\OrganizationInvitationFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|OrganizationInvitation newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|OrganizationInvitation newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|OrganizationInvitation query()
@@ -161,6 +143,6 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|User query()
  */
-	class User extends \Eloquent implements \Filament\Models\Contracts\FilamentUser, \Illuminate\Contracts\Auth\MustVerifyEmail {}
+	class User extends \Eloquent implements \Filament\Models\Contracts\FilamentUser, \Illuminate\Contracts\Auth\MustVerifyEmail, \Filament\Models\Contracts\HasTenants {}
 }
 

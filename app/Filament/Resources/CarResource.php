@@ -9,8 +9,10 @@ use App\Filament\Resources\CarResource\Pages\ListCars;
 use App\Models\Car;
 use App\Models\CarBrand;
 use App\Models\Organization;
+use App\Models\User;
 use App\Services\CarRepository;
 use Auth;
+use Filament\Facades\Filament;
 use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\ColorPicker;
 use Filament\Forms\Components\Component;
@@ -39,6 +41,7 @@ class CarResource extends Resource
 
     public static function form(Form $form): Form
     {
+        /** @var User $user */
         $user = Auth::user();
 
         return $form
@@ -73,7 +76,7 @@ class CarResource extends Resource
                     ->searchDebounce(300)
                     ->getSearchResultsUsing(function (string $search, Get $get, CarRepository $repository) {
                         $year = $get('specs.year');
-                        $brand = CarBrand::find($get('brand_id'));
+                        $brand = CarBrand::find((int) $get('brand_id'));
 
                         if(!$year || !$brand) {
                             return [$search => $search];

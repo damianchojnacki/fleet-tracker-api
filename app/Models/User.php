@@ -88,6 +88,7 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail, Has
 
     public function canAccessTenant(Model $tenant): bool
     {
+        /** @phpstan-ignore-next-line  */
         return $this->ownsOrganization($tenant) || $this->isAdmin();
     }
 }
