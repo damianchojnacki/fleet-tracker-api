@@ -20,6 +20,10 @@ class Car extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'specs' => 'array',
+    ];
+
     public function users(): HasMany
     {
         return $this->hasMany(User::class);

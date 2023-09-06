@@ -22,6 +22,7 @@ class CarResource extends JsonResource
             'plate_number' => $this->plate_number,
             'vin' => $this->vin,
             'is_active' => $this->is_active,
+            'specs' => $this->specs,
             'brand' => new CarBrandResource($this->whenLoaded('brand')),
         ];
     }

@@ -28,6 +28,15 @@ class CarFactory extends Factory
             'plate_number' => Str::upper(dechex(rand(11, 15)) . dechex(rand(11, 15)) . bin2hex(random_bytes(3))),
             'vin' => rand(10000000000000000, 99999999999999999),
             'is_active' => $this->faker->boolean,
+            'specs' => [
+                'year' => rand(2000, 2023),
+                'model' => $this->faker->word,
+                'color' => $this->faker->colorName,
+                'fuel_type' => $this->faker->randomElement(['gas', 'diesel', 'electricity', 'hybrid']),
+                'drive' => $this->faker->randomElement(['rwd', 'fwd', 'awd']),
+                'transmission' => $this->faker->randomElement(['a', 'm']),
+                'fuel_consumption' => rand(6, 20),
+            ]
         ];
     }
 }

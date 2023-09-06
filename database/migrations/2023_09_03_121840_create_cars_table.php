@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('plate_number')->nullable();
             $table->string('vin')->nullable();
             $table->boolean('is_active')->default(true);
+            $table->json('specs')->default('{}');
             $table->timestamps();
         });
     }

@@ -68,4 +68,9 @@ class CarRepository
             ->unique()
             ->values();
     }
+
+    public static function mpgToKml(float $mpg): float
+    {
+        return round(235.214583 / $mpg, 2);
+    }
 }
