@@ -4,13 +4,16 @@ namespace App\Models;
 
 use App\Models\Traits\HasOrganization;
 use Filament\Models\Contracts\FilamentUser;
+use Filament\Models\Contracts\HasTenants;
 use Filament\Panel;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Collection;
 use Laravel\Sanctum\HasApiTokens;
 
 /**
@@ -25,7 +28,7 @@ use Laravel\Sanctum\HasApiTokens;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  */
-class User extends Authenticatable implements FilamentUser, MustVerifyEmail
+class User extends Authenticatable implements FilamentUser, MustVerifyEmail, HasTenants
 {
     use HasApiTokens, HasFactory, Notifiable, HasOrganization;
 
@@ -56,7 +59,7 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
 
     public function canAccessPanel(Panel $panel): bool
     {
-        return $this->isAdmin();
+        return $this->isAdmin() || $this->ownsOrganization($this->organization);
     }
 
     public function car(): BelongsTo
@@ -67,5 +70,24 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail
     public function trips(): HasMany
     {
         return $this->hasMany(Trip::class);
+    }
+
+    public function getNameAttribute(): string
+    {
+        return "{$this->firstname} {$this->lastname}";
+    }
+
+    public function getTenants(Panel $panel): Collection
+    {
+        if($this->isAdmin()){
+            return Organization::all();
+        }
+
+        return $this->organization()->get();
+    }
+
+    public function canAccessTenant(Model $tenant): bool
+    {
+        return $this->ownsOrganization($tenant) || $this->isAdmin();
     }
 }
