@@ -19,7 +19,7 @@ class Cars implements CarApi
      */
     public function get(string $brand, int $year): Collection
     {
-        return $this->cache("cars?make=$brand&year=$year&limit=50", function (string $path) {
+        return $this->cache("cars?make={$brand}&year={$year}&limit=50", function (string $path) {
             return $this->client
                 ->request
                 ->get($path)

@@ -20,6 +20,14 @@ class CarBrand extends Model
         return $this->hasMany(Car::class);
     }
 
+    /**
+     * @return array{id: int, name: string}|array<never>
+     */
+    public function getRows(): array
+    {
+        return Storage::json('car-brands.json') ?? [];
+    }
+
     protected function sushiShouldCache(): bool
     {
         return true;
@@ -28,13 +36,5 @@ class CarBrand extends Model
     protected function sushiCacheReferencePath(): string
     {
         return Storage::path('car-brands.json');
-    }
-
-    /**
-     * @return array{id: int, name: string}|array<never>
-     */
-    public function getRows(): array
-    {
-        return Storage::json('car-brands.json') ?? [];
     }
 }
