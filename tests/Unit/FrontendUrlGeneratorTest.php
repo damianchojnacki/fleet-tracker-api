@@ -3,6 +3,7 @@
 namespace Tests\Unit;
 
 use App\Models\OrganizationInvitation;
+use App\Models\User;
 use App\Services\Frontend;
 use Tests\TestCase;
 
@@ -22,7 +23,7 @@ class FrontendUrlGeneratorTest extends TestCase
         $this->assertStringEndsWith($path, $url);
     }
 
-    public function testAcceptInvitationHasCorrectUrl(): void
+    public function testAcceptInvitationGetsCorrectUrl(): void
     {
         $invitation = new OrganizationInvitation([
             'id' => 9876,
@@ -32,5 +33,20 @@ class FrontendUrlGeneratorTest extends TestCase
 
         $this->assertStringContainsString(9876, $url);
         $this->assertStringContainsString('?signature=', $url);
+    }
+
+    public function testVerifyEmailGetsCorrectUrl(): void
+    {
+        $user = new User([
+            'id' => 9876,
+            'email' => 'test@example.com',
+        ]);
+
+        $url = Frontend::url()->verifyEmail($user);
+
+        $this->assertStringContainsString(9876, $url);
+        $this->assertStringContainsString('id=' . $user->id, $url);
+        $this->assertStringContainsString('hash=' . sha1($user->email), $url);
+        $this->assertStringContainsString('signature=', $url);
     }
 }

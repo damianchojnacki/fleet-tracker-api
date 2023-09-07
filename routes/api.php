@@ -3,6 +3,8 @@
 use App\Http\Controllers\Auth\OrganizationInvitationController;
 use App\Http\Controllers\CarBrandController;
 use App\Http\Controllers\CarController;
+use App\Http\Controllers\UserTripController;
+use App\Http\Controllers\UserTripPointController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,13 +20,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::apiResource('cars/brands', CarBrandController::class)
-    ->except('store', 'update', 'destroy');
+    ->only('index', 'show');
 
 Route::group([
     'middleware' => 'auth:sanctum',
 ], function () {
     Route::apiResource('cars', CarController::class)
-        ->except('store', 'update', 'destroy');
+        ->only('index', 'show');
 
     Route::put('organization-invitations/{invitation}', [OrganizationInvitationController::class, 'accept'])
         ->name('organization-invitations.accept')

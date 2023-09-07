@@ -17,14 +17,16 @@ namespace App\Models{
  * @property int $id
  * @property string $plate_number
  * @property string $vin
+ * @property array<string,int|float|string> $specs
  * @property bool $is_active
  * @property Carbon $created_at
  * @property Carbon $updated_at
  * @property int $brand_id
  * @property int $organization_id
- * @property array $specs
  * @property-read \App\Models\CarBrand|null $brand
  * @property-read \App\Models\Organization $organization
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, Car> $trips
+ * @property-read int|null $trips_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\User> $users
  * @property-read int|null $users_count
  * @method static \Database\Factories\CarFactory factory($count = null, $state = [])
@@ -103,6 +105,8 @@ namespace App\Models{
  * @property int $car_id
  * @property int $user_id
  * @property-read \App\Models\Car $car
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\TripPoint> $points
+ * @property-read int|null $points_count
  * @property-read \App\Models\User $user
  * @method static \Database\Factories\TripFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Trip newModelQuery()
@@ -110,6 +114,24 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Trip query()
  */
 	class Trip extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * App\Models\TripPoint
+ *
+ * @property int $id
+ * @property int $trip_id
+ * @property string $lat
+ * @property string $lng
+ * @property string|null $created_at
+ * @property-read \App\Models\Trip $trip
+ * @method static \Database\Factories\TripPointFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder|TripPoint newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|TripPoint newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|TripPoint query()
+ */
+	class TripPoint extends \Eloquent {}
 }
 
 namespace App\Models{
