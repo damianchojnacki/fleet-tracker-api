@@ -17,5 +17,6 @@ class CarStruct
         public string $model,
         public string $transmission,
         public int $year,
-    ) {}
+    ) {
+    }
 }

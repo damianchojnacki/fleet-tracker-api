@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group([
     'prefix' => 'api',
-], function (){
+], function () {
     Route::post('/register', [RegisteredUserController::class, 'store'])
         ->middleware('guest')
         ->name('register');

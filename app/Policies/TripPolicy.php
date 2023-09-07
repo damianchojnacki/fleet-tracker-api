@@ -5,7 +5,6 @@ namespace App\Policies;
 use App\Models\Car;
 use App\Models\Trip;
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
 
 class TripPolicy
 {

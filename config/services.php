@@ -33,5 +33,5 @@ return [
 
     'api_ninjas' => [
         'api_key' => env('API_NINJAS_API_KEY'),
-    ]
+    ],
 ];

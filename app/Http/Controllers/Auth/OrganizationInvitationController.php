@@ -6,10 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\AcceptOrganizationInvitationRequest;
 use App\Http\Requests\Auth\CancelOrganizationInvitationRequest;
 use App\Models\OrganizationInvitation;
-use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
 
 class OrganizationInvitationController extends Controller
 {

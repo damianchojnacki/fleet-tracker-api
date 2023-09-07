@@ -2,8 +2,6 @@
 
 namespace Tests\Feature\Notifications;
 
-use App\Models\Car;
-use App\Models\Organization;
 use App\Models\OrganizationInvitation;
 use App\Models\User;
 use App\Notifications\InvitedToOrganization;

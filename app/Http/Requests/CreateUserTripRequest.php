@@ -4,7 +4,6 @@ namespace App\Http\Requests;
 
 use App\Models\Car;
 use App\Models\Trip;
-use App\Models\TripPoint;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreateUserTripRequest extends FormRequest

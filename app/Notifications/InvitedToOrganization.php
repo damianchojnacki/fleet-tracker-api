@@ -5,10 +5,8 @@ namespace App\Notifications;
 use App\Models\OrganizationInvitation;
 use App\Services\Frontend;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
-use Illuminate\Support\Facades\URL;
 
 class InvitedToOrganization extends Notification
 {

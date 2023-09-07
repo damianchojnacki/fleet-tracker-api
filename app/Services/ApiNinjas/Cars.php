@@ -10,7 +10,9 @@ class Cars implements CarApi
 {
     use CacheRequests;
 
-    public function __construct(protected Client $client) {}
+    public function __construct(protected Client $client)
+    {
+    }
 
     /**
      * @return Collection<int,CarStruct>
@@ -22,7 +24,7 @@ class Cars implements CarApi
                 ->request
                 ->get($path)
                 ->collect()
-                ->map(fn(array $model) => new CarStruct(...$model));
+                ->map(fn (array $model) => new CarStruct(...$model));
         });
     }
 }

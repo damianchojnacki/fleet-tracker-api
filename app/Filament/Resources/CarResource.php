@@ -2,7 +2,6 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\CarResource\Pages;
 use App\Filament\Resources\CarResource\Pages\CreateCar;
 use App\Filament\Resources\CarResource\Pages\EditCar;
 use App\Filament\Resources\CarResource\Pages\ListCars;
@@ -12,17 +11,12 @@ use App\Models\Organization;
 use App\Models\User;
 use App\Services\CarRepository;
 use Auth;
-use Filament\Facades\Filament;
-use Filament\Forms\Components\Checkbox;
-use Filament\Forms\Components\ColorPicker;
-use Filament\Forms\Components\Component;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 use Filament\Forms\Form;
 use Filament\Forms\Get;
 use Filament\Resources\Resource;
-use Filament\Tables;
 use Filament\Tables\Actions\BulkActionGroup;
 use Filament\Tables\Actions\CreateAction;
 use Filament\Tables\Actions\DeleteAction;
@@ -49,13 +43,12 @@ class CarResource extends Resource
                 Select::make('organization_id')
                     ->relationship(name: 'organization', titleAttribute: 'name')
                     ->allowHtml()
-                    ->getOptionLabelFromRecordUsing(fn (Organization $organization) =>
-                        "<b>{$organization->id}</b> - {$organization->name}"
+                    ->getOptionLabelFromRecordUsing(fn (Organization $organization) => "<b>{$organization->id}</b> - {$organization->name}"
                     )
                     ->searchable(['name', 'id'])
                     ->default($user->organization->id)
                     ->required()
-                    ->hidden(!$user->isAdmin())
+                    ->hidden(! $user->isAdmin())
                     ->preload(),
                 Toggle::make('is_active')
                     ->default(true),
@@ -78,7 +71,7 @@ class CarResource extends Resource
                         $year = $get('specs.year');
                         $brand = CarBrand::find((int) $get('brand_id'));
 
-                        if(!$year || !$brand) {
+                        if (! $year || ! $brand) {
                             return [$search => $search];
                         }
 

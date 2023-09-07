@@ -2,8 +2,6 @@
 
 namespace Tests\Feature\Http\Controllers;
 
-use App\Models\Car;
-use App\Models\Organization;
 use App\Models\Trip;
 use App\Models\TripPoint;
 use App\Models\User;

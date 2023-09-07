@@ -2,13 +2,11 @@
 
 namespace App\Models;
 
-use App\Services\GeoService;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use function PHPUnit\Framework\isNan;
 
 /**
  * @property int $id
@@ -41,14 +39,14 @@ class Trip extends Model
     {
         $distance = 0;
 
-        if(!$this->relationLoaded('points')){
+        if (! $this->relationLoaded('points')) {
             $this->load('points');
         }
 
         $points = $this->points;
 
         $points->each(function (TripPoint $point, int $i) use (&$distance, $points) {
-            if($i >= $points->count() - 1) {
+            if ($i >= $points->count() - 1) {
                 return;
             }
 

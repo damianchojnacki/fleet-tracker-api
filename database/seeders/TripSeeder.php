@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Car;
-use App\Models\Organization;
 use App\Models\Trip;
 use App\Models\User;
 use Illuminate\Database\Seeder;

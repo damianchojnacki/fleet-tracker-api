@@ -2,15 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateUserTripPointRequest;
 use App\Http\Requests\CreateUserTripRequest;
 use App\Http\Requests\DeleteUserTripRequest;
 use App\Http\Requests\ShowUserTripRequest;
 use App\Http\Requests\UpdateUserTripRequest;
 use App\Http\Resources\TripResource;
-use App\Models\Car;
 use App\Models\Trip;
-use App\Models\TripPoint;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;

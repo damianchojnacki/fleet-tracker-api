@@ -27,7 +27,7 @@ trait GeneratesApiResponses
             $data = $data->toArray();
         }
 
-        if (is_array($data) && !array_key_exists('data', $data)) {
+        if (is_array($data) && ! array_key_exists('data', $data)) {
             $data = ['data' => $data];
         }
 
@@ -117,19 +117,19 @@ trait GeneratesApiResponses
             ->json();
     }
 
-//    protected function pdf($view, $data, $filename): JsonResponse
-//    {
-//        $pdf = Pdf::loadView($view, $data)->stream($filename);
-//
-//        return $this->ok()->setData(
-//            base64_encode($pdf->content())
-//        );
-//    }
-//
-//    protected function pdfRaw($data): JsonResponse
-//    {
-//        return $this->ok()->setData(
-//            base64_encode($data)
-//        );
-//    }
+    //    protected function pdf($view, $data, $filename): JsonResponse
+    //    {
+    //        $pdf = Pdf::loadView($view, $data)->stream($filename);
+    //
+    //        return $this->ok()->setData(
+    //            base64_encode($pdf->content())
+    //        );
+    //    }
+    //
+    //    protected function pdfRaw($data): JsonResponse
+    //    {
+    //        return $this->ok()->setData(
+    //            base64_encode($data)
+    //        );
+    //    }
 }

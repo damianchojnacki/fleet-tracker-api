@@ -8,6 +8,6 @@ trait CacheRequests
 {
     protected function cache(string $path, callable $callback): mixed
     {
-        return Cache::rememberForever($path, fn() => $callback($path));
+        return Cache::rememberForever($path, fn () => $callback($path));
     }
 }

@@ -28,9 +28,9 @@ use Laravel\Sanctum\HasApiTokens;
  * @property \Carbon\Carbon $created_at
  * @property \Carbon\Carbon $updated_at
  */
-class User extends Authenticatable implements FilamentUser, MustVerifyEmail, HasTenants
+class User extends Authenticatable implements FilamentUser, HasTenants, MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable, HasOrganization;
+    use HasApiTokens, HasFactory, HasOrganization, Notifiable;
 
     /**
      * The attributes that should be hidden for serialization.
@@ -79,7 +79,7 @@ class User extends Authenticatable implements FilamentUser, MustVerifyEmail, Has
 
     public function getTenants(Panel $panel): Collection
     {
-        if($this->isAdmin()){
+        if ($this->isAdmin()) {
             return Organization::all();
         }
 

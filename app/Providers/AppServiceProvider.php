@@ -20,7 +20,7 @@ class AppServiceProvider extends ServiceProvider
 
             $url = parse_url($url, PHP_URL_QUERY);
 
-            if(!$url){
+            if (! $url) {
                 return null;
             }
 

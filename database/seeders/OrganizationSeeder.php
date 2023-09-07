@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\CarBrand;
 use App\Models\Organization;
 use App\Models\User;
 use Illuminate\Database\Seeder;

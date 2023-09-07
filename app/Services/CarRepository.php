@@ -6,7 +6,6 @@ use ApiNinjas;
 use App\Services\ApiNinjas\CarApi;
 use App\Services\ApiNinjas\Structs\CarStruct;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Str;
 
 class CarRepository
 {

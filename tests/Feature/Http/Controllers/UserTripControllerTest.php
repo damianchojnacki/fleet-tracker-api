@@ -3,7 +3,6 @@
 namespace Tests\Feature\Http\Controllers;
 
 use App\Models\Car;
-use App\Models\Organization;
 use App\Models\Trip;
 use App\Models\TripPoint;
 use App\Models\User;
@@ -172,7 +171,7 @@ class UserTripControllerTest extends TestCase
             ->recycle($user)
             ->create();
 
-         $this->actingAs($user)
+        $this->actingAs($user)
             ->deleteJson(route('user.trips.destroy', $trip))
             ->assertSuccessful();
 

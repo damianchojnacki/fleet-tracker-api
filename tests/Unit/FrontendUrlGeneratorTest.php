@@ -45,8 +45,8 @@ class FrontendUrlGeneratorTest extends TestCase
         $url = Frontend::url()->verifyEmail($user);
 
         $this->assertStringContainsString(9876, $url);
-        $this->assertStringContainsString('id=' . $user->id, $url);
-        $this->assertStringContainsString('hash=' . sha1($user->email), $url);
+        $this->assertStringContainsString('id='.$user->id, $url);
+        $this->assertStringContainsString('hash='.sha1($user->email), $url);
         $this->assertStringContainsString('signature=', $url);
     }
 }

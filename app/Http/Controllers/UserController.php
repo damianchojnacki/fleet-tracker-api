@@ -2,12 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\CarCollection;
-use App\Http\Resources\CarResource;
 use App\Http\Resources\UserResource;
-use App\Models\Car;
 use App\Models\User;
-use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -20,7 +16,7 @@ class UserController extends Controller
         /** @var User $user */
         $user = $request->user();
 
-        if(!$user->hasVerifiedEmail()){
+        if (! $user->hasVerifiedEmail()) {
             abort(409, 'You must verify your email address.');
         }
 

@@ -6,8 +6,6 @@ use App\Models\Organization;
 use Illuminate\Database\Eloquent\Concerns\HasRelationships;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
-use Illuminate\Support\Str;
-use Laravel\Sanctum\HasApiTokens;
 
 trait HasOrganization
 {
@@ -26,9 +24,9 @@ trait HasOrganization
     /**
      * Determine if the user owns the given team.
      */
-    public function ownsOrganization(?Organization $organization = null): bool
+    public function ownsOrganization(Organization $organization = null): bool
     {
-        if (!$organization) {
+        if (! $organization) {
             return false;
         }
 
@@ -38,9 +36,9 @@ trait HasOrganization
     /**
      * Determine if the user belongs to the given team.
      */
-    public function belongsToOrganization(?Organization $organization = null): bool
+    public function belongsToOrganization(Organization $organization = null): bool
     {
-        if (!$organization) {
+        if (! $organization) {
             return false;
         }
 

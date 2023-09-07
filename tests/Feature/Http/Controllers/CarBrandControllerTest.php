@@ -4,7 +4,6 @@ namespace Tests\Feature\Http\Controllers;
 
 use App\Models\CarBrand;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Testing\Fluent\AssertableJson;
 use Tests\TestCase;
 
 /**

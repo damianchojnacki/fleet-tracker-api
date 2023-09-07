@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateUserTripPointRequest;
 use App\Models\Trip;
 use App\Models\TripPoint;
-use Illuminate\Http\Request;
 
 class UserTripPointController extends Controller
 {

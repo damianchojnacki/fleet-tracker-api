@@ -3,9 +3,7 @@
 namespace App\Policies;
 
 use App\Models\OrganizationInvitation;
-use App\Models\Trip;
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
 
 class OrganizationInvitationPolicy
 {
