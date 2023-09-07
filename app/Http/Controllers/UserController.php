@@ -12,19 +12,18 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function show(Request $request): JsonResponse
+    /**
+     * Show authenticated user.
+     */
+    public function show(Request $request): UserResource
     {
         /** @var User $user */
         $user = $request->user();
 
         if(!$user->hasVerifiedEmail()){
-            return $this->setStatusCode(409)->json([
-                'message' => 'You must verify your email address.'
-            ]);
+            abort(409, 'You must verify your email address.');
         }
 
-        return $this->ok(
-            new UserResource($user)
-        );
+        return new UserResource($user);
     }
 }

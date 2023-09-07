@@ -13,6 +13,9 @@ use Illuminate\Support\Facades\Gate;
 
 class OrganizationInvitationController extends Controller
 {
+    /**
+     * Accept organization invitation.
+     */
     public function accept(AcceptOrganizationInvitationRequest $request, OrganizationInvitation $invitation): JsonResponse
     {
         $request->user()->update([
@@ -24,6 +27,9 @@ class OrganizationInvitationController extends Controller
         return $this->noContent();
     }
 
+    /**
+     * Cancel organization invitation.
+     */
     public function cancel(CancelOrganizationInvitationRequest $request, OrganizationInvitation $invitation): JsonResponse
     {
         $invitation->delete();

@@ -8,26 +8,29 @@ use App\Models\Car;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class CarController extends Controller
 {
-    public function index(Request $request): JsonResponse
+    /**
+     * List available cars.
+     */
+    public function index(Request $request): AnonymousResourceCollection
     {
         $cars = Car::whereHas('organization', fn(Builder $q) =>
             $q->where('id', $request->user()?->organization?->id)
         )->get();
 
-        return $this->ok(
-            CarResource::collection($cars)
-        );
+        return CarResource::collection($cars);
     }
 
-    public function show(ShowCarRequest $request, Car $car): JsonResponse
+    /**
+     * Show a specific car.
+     */
+    public function show(ShowCarRequest $request, Car $car): CarResource
     {
         $car->load(['brand']);
 
-        return $this->ok(
-            new CarResource($car)
-        );
+        return new CarResource($car);
     }
 }

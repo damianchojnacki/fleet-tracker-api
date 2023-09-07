@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\BrandCollection;
 use App\Http\Resources\CarBrandResource;
 use App\Models\CarBrand;
 use Illuminate\Http\JsonResponse;
@@ -11,19 +10,21 @@ use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 
 class CarBrandController extends Controller
 {
-    public function index(Request $request): JsonResponse
+    /**
+     * List all car brands.
+     */
+    public function index(Request $request): AnonymousResourceCollection
     {
         $brands = CarBrand::all();
 
-        return $this->ok(
-            CarBrandResource::collection($brands)
-        );
+        return CarBrandResource::collection($brands);
     }
 
-    public function show(Request $request, CarBrand $brand): JsonResponse
+    /**
+     * Show a specific car brand.
+     */
+    public function show(Request $request, CarBrand $brand): CarBrandResource
     {
-        return $this->ok(
-            new CarBrandResource($brand)
-        );
+        return new CarBrandResource($brand);
     }
 }

@@ -3,8 +3,11 @@
 namespace App\Providers;
 
 use App\Models\User;
+use App\Services\Frontend;
 use Illuminate\Auth\Notifications\ResetPassword;
+use Illuminate\Auth\Notifications\VerifyEmail;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Gate;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -28,6 +31,12 @@ class AuthServiceProvider extends ServiceProvider
             return config('app.frontend_url')."/password-reset/{$token}?email={$notifiable->getEmailForPasswordReset()}";
         });
 
-        //
+        VerifyEmail::createUrlUsing(function (User $user) {
+            return Frontend::url()->verifyEmail($user);
+        });
+
+        Gate::define('viewApiDocs', function (User $user) {
+            return $user->isAdmin();
+        });
     }
 }

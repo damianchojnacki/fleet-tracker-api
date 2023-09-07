@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ViewDocsRequest;
+use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class DocsController extends Controller
 {
-    public function __invoke(ViewDocsRequest $request, string $path = 'index.html'): Response
+    public function __invoke(Request $request, string $path = 'index.html'): Response
     {
         if (!Storage::disk('docs')->exists($path)) {
             abort(404);
