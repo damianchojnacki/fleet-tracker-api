@@ -13,6 +13,7 @@ env:
   TELESCOPE_ENABLED: false
   STRIPE_KEY: ${{ secrets.STRIPE_KEY }}
   STRIPE_SECRET: ${{ secrets.STRIPE_SECRET }}
+  API_NINJAS_API_KEY: ${{ secrets.API_NINJAS_API_KEY }}
 jobs:
   unit:
     runs-on: ubuntu-20.04
