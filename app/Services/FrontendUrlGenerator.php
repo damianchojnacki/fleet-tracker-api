@@ -23,7 +23,7 @@ class FrontendUrlGenerator
             'invitation' => $invitation->id,
         ]);
 
-        return $this->path("organization-invitations/{$invitation->id}?signature={$signature}");
+        return $this->path("associate-organization?id={$invitation->id}&signature={$signature}");
     }
 
     public function verifyEmail(User $user): string

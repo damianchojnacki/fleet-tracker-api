@@ -31,8 +31,8 @@ class FrontendUrlGeneratorTest extends TestCase
 
         $url = Frontend::url()->acceptOrganizationInvitation($invitation);
 
-        $this->assertStringContainsString(9876, $url);
-        $this->assertStringContainsString('?signature=', $url);
+        $this->assertStringContainsString('?id=9876', $url);
+        $this->assertStringContainsString('&signature=', $url);
     }
 
     public function testVerifyEmailGetsCorrectUrl(): void

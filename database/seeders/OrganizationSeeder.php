@@ -17,8 +17,12 @@ class OrganizationSeeder extends Seeder
             'car_id' => null,
             'organization_id' => null,
         ])->each(function (User $user) {
-            Organization::factory()->create([
+            $organization = Organization::factory()->create([
                 'owner_id' => $user->id,
+            ]);
+
+            $user->update([
+                'organization_id' => $organization->id,
             ]);
         });
     }

@@ -36,7 +36,7 @@ class InvitedToOrganization extends Notification
     public function toMail(object $notifiable): MailMessage
     {
         return (new MailMessage())
-            ->line(__('You have been invited to join the :organization organization.', [
+            ->line(__('You have been invited to join the **:organization** organization.', [
                 'organization' => $this->invitation->organization->name,
             ]))
             ->line(__('You may accept this invitation by clicking the button below:'))

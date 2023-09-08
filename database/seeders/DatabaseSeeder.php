@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
             OrganizationSeeder::class,
             CarSeeder::class,
             UserSeeder::class,
+            OrganizationInvitationSeeder::class,
             TripSeeder::class,
             TripPointSeeder::class,
         ]);

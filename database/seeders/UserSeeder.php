@@ -12,10 +12,8 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
-        User::factory(20)
-            ->create();
-
         User::factory()->create([
+            'organization_id' => null,
             'car_id' => null,
             'firstname' => 'Test',
             'lastname' => 'User',
@@ -23,11 +21,15 @@ class UserSeeder extends Seeder
         ]);
 
         User::factory()->create([
+            'organization_id' => null,
             'car_id' => null,
             'firstname' => 'Test',
             'lastname' => 'Admin',
             'email' => 'admin@example.com',
             'is_admin' => true,
         ]);
+
+        User::factory(20)
+            ->create();
     }
 }
