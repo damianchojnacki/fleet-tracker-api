@@ -76,6 +76,12 @@ sail npm run dev
 
 Please refer to official Laravel documentation for more information about [Sail](https://laravel.com/docs/10.x/sail).
 
+### Documentation
+
+Documentation is available on `/docs`.
+
+API Documentation is available on `/docs/api`. 
+
 ### Generating documentation
 
 Documentation is generated using [phpDocumentor](https://www.phpdoc.org/). To generate documentation, run the following command:
@@ -83,6 +89,8 @@ Documentation is generated using [phpDocumentor](https://www.phpdoc.org/). To ge
 ```shell
 ./generate_docs.sh
 ```
+
+API Documentation is generated dynamicly thanks to Scramble.
 
 ## License
 
