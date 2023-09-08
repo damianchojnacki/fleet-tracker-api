@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\URL;
 use Tests\TestCase;
 
 /**
- * @see \App\Http\Controllers\Auth\OrganizationInvitationController
+ * @see \App\Http\Controllers\OrganizationInvitationController
  */
 class OrganizationInvitationControllerTest extends TestCase
 {

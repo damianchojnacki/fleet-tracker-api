@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\AcceptOrganizationInvitationRequest;
 use App\Http\Requests\Auth\CancelOrganizationInvitationRequest;
 use App\Models\OrganizationInvitation;

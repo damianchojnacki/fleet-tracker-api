@@ -27,11 +27,12 @@ class EmailVerificationTest extends TestCase
             ['id' => $user->id, 'hash' => sha1($user->email)]
         );
 
-        $response = $this->actingAs($user)->get($verificationUrl);
+        $this->actingAs($user)
+            ->post($verificationUrl)
+            ->assertSuccessful();
 
         Event::assertDispatched(Verified::class);
         $this->assertTrue($user->fresh()->hasVerifiedEmail());
-        $response->assertSuccessful();
     }
 
     public function test_email_is_not_verified_with_invalid_hash(): void

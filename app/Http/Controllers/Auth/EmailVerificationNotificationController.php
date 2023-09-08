@@ -19,6 +19,8 @@ class EmailVerificationNotificationController extends Controller
 
         $request->user()->sendEmailVerificationNotification();
 
-        return $this->ok();
+        return $this->ok([
+            'status' => __('Email verification link sent.'),
+        ]);
     }
 }

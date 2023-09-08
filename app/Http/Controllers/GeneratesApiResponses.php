@@ -27,10 +27,6 @@ trait GeneratesApiResponses
             $data = $data->toArray();
         }
 
-        if (is_array($data) && ! array_key_exists('data', $data)) {
-            $data = ['data' => $data];
-        }
-
         return response()->json(
             $data ?? [],
             $this->statusCode,

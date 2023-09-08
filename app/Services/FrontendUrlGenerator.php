@@ -36,7 +36,7 @@ class FrontendUrlGenerator
             'hash' => $hash,
         ]);
 
-        return $this->path("email/verify?id={$id}&hash={$hash}&signature={$signature}");
+        return $this->path("verify-email?id={$id}&hash={$hash}&signature={$signature}");
     }
 
     public function register(): string

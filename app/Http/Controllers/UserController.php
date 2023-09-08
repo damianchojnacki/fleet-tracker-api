@@ -20,6 +20,8 @@ class UserController extends Controller
             abort(409, 'You must verify your email address.');
         }
 
+        $user->load('organization');
+
         return new UserResource($user);
     }
 }

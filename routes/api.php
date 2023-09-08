@@ -1,8 +1,8 @@
 <?php
 
-use App\Http\Controllers\Auth\OrganizationInvitationController;
 use App\Http\Controllers\CarBrandController;
 use App\Http\Controllers\CarController;
+use App\Http\Controllers\OrganizationInvitationController;
 use Illuminate\Support\Facades\Route;
 
 /*

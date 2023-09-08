@@ -22,6 +22,8 @@ class VerifyEmailController extends Controller
             event(new Verified($request->user()));
         }
 
-        return $this->noContent();
+        return $this->ok([
+            'status' => __('Email successfully verified.'),
+        ]);
     }
 }
