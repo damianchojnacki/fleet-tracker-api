@@ -82,7 +82,7 @@ Documentation is available on `/docs`.
 
 API Documentation is available on `/docs/api`. 
 
-### Generating documentation
+#### Generating documentation
 
 Documentation is generated using [phpDocumentor](https://www.phpdoc.org/). To generate documentation, run the following command:
 
@@ -90,7 +90,7 @@ Documentation is generated using [phpDocumentor](https://www.phpdoc.org/). To ge
 ./generate_docs.sh
 ```
 
-API Documentation is generated dynamicly thanks to Scramble.
+API Documentation is generated automatically thanks to Scramble.
 
 ## License
 
