@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+require __DIR__.'/auth.php';
+
 Route::apiResource('cars/brands', CarBrandController::class)
     ->only('index', 'show');
 

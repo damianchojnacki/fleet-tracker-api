@@ -30,7 +30,7 @@ use Laravel\Sanctum\HasApiTokens;
  */
 class User extends Authenticatable implements FilamentUser, HasTenants, MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, HasOrganization, Notifiable;
+    use HasApiTokens, HasFactory, HasOrganization, Notifiable, HasApiTokens;
 
     /**
      * The attributes that should be hidden for serialization.
