@@ -28,7 +28,10 @@ class AuthenticatedSessionController extends Controller
      */
     public function destroy(Request $request): Response
     {
-        $request->user()->currentAccessToken()?->delete();
+        /** @var \Laravel\Sanctum\PersonalAccessToken|null $token */
+        $token = $request->user()->currentAccessToken();
+
+        $token?->delete();
 
         return response()->noContent();
     }
