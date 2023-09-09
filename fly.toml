@@ -27,6 +27,7 @@ console_command = "php /var/www/html/artisan tinker"
   SESSION_DRIVER = "cookie"
   SESSION_LIFETIME = "1440"
   SESSION_SECURE_COOKIE = "true"
+  FRONTEND_URL = "https://fleet-tracker-umber.vercel.app"
 
 [[mounts]]
   source = "storage_vol"
