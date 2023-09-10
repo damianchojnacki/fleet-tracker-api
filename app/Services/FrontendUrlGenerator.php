@@ -39,6 +39,11 @@ class FrontendUrlGenerator
         return $this->path("verify-email?id={$id}&hash={$hash}&signature={$signature}");
     }
 
+    public function resetPassword(User $user, string $token): string
+    {
+        return $this->path("password-reset/{$token}?email={$user->getEmailForPasswordReset()}");
+    }
+
     public function register(): string
     {
         return $this->path('register');

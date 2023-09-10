@@ -68,7 +68,7 @@ class CarRepository
             ->values();
     }
 
-    public static function mpgToKml(float $mpg): float
+    public static function mpgTol100(float $mpg): float
     {
         return round(235.214583 / $mpg, 2);
     }

@@ -27,8 +27,8 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        ResetPassword::createUrlUsing(function (User $notifiable, string $token) {
-            return config('app.frontend_url')."/password-reset/{$token}?email={$notifiable->getEmailForPasswordReset()}";
+        ResetPassword::createUrlUsing(function (User $user, string $token) {
+            return Frontend::url()->resetPassword($user, $token);
         });
 
         VerifyEmail::createUrlUsing(function (User $user) {

@@ -4,6 +4,7 @@ namespace Tests\Feature\Auth;
 
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Str;
 use Tests\TestCase;
 
 class AuthenticationTest extends TestCase
@@ -30,6 +31,20 @@ class AuthenticationTest extends TestCase
             'email' => $user->email,
             'password' => 'wrong-password',
         ])->assertInvalid('email');
+    }
+
+    public function testLoginIsThrottled(): void
+    {
+        $user = User::factory()->create();
+
+        foreach(range(0, 5) as $i){
+            $response = $this->postJson(route('login'), [
+                'email' => $user->email,
+                'password' => Str::random(),
+            ]);
+        }
+
+        $this->assertStringContainsString('Too many login attempts.', $response->json('message'));
     }
 
     public function testUserCanLogout(): void

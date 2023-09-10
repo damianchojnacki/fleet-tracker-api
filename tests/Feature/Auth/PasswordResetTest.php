@@ -23,13 +23,26 @@ class PasswordResetTest extends TestCase
         Notification::assertSentTo($user, ResetPassword::class);
     }
 
+    public function testResetLinkCannotBeSentWithNotExistingUser(): void
+    {
+        Notification::fake();
+
+        User::factory()->create();
+
+        $this->post(route('password.email'), [
+            'email' => 'invalid@example.com'
+        ])->assertInvalid('email');
+    }
+
     public function test_password_can_be_reset_with_valid_token(): void
     {
         Notification::fake();
 
         $user = User::factory()->create();
 
-        $this->post(route('password.email'), ['email' => $user->email]);
+        $this->post(route('password.email'), [
+            'email' => $user->email
+        ]);
 
         Notification::assertSentTo($user, ResetPassword::class, function (object $notification) use ($user) {
             $response = $this->post(route('password.store'), [
@@ -40,6 +53,28 @@ class PasswordResetTest extends TestCase
             ]);
 
             $response->assertSessionHasNoErrors();
+
+            return true;
+        });
+    }
+
+    public function testPasswordCanNotBeResetWithInvalidEmail(): void
+    {
+        Notification::fake();
+
+        $user = User::factory()->create();
+
+        $this->post(route('password.email'), [
+            'email' => $user->email
+        ]);
+
+        Notification::assertSentTo($user, ResetPassword::class, function (object $notification) use ($user) {
+            $this->post(route('password.store'), [
+                'token' => $notification->token,
+                'email' => 'invalid@example.com',
+                'password' => 'password',
+                'password_confirmation' => 'password',
+            ])->assertInvalid('email');
 
             return true;
         });

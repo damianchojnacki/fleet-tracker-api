@@ -35,5 +35,6 @@
         <env name="SESSION_DRIVER" value="array"/>
         <env name="TELESCOPE_ENABLED" value="false"/>
         <env name="SITE_PROTECTION_PASSWORDS" value=""/>
+        <env name="API_NINJAS_API_KEY" value=""/>
     </php>
 </phpunit>

@@ -21,4 +21,5 @@ Route::get('/', function () {
 
 Route::get('docs/{path?}', DocsController::class)
     ->middleware(RestrictedDocsAccess::class)
-    ->where('path', '(.*)');
+    ->where('path', '(.*)')
+    ->name('docs');
