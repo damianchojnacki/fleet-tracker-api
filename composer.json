@@ -19,7 +19,8 @@
         "laravel/sanctum": "^3.2",
         "laravel/telescope": "^4.16",
         "laravel/tinker": "^2.8",
-        "owenvoke/blade-fontawesome": "^2.4"
+        "owenvoke/blade-fontawesome": "^2.4",
+        "sentry/sentry-laravel": "^3.8"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.13",
