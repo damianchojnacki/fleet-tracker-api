@@ -12,6 +12,13 @@ use Tests\TestCase;
  */
 class ApiNinjasTest extends TestCase
 {
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        config()->set('services.api_ninjas.api_key', '');
+    }
+
     public function testValidatesConfig(): void
     {
         $this->expectException(Exception::class);
