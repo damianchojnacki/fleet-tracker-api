@@ -4,6 +4,7 @@ namespace Tests\Feature\Http\Controllers;
 
 use App\Models\CarBrand;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Storage;
 use Tests\TestCase;
 
 /**
@@ -15,6 +16,11 @@ class DocsControllerTest extends TestCase
 
     public function testDocsAreVisibleInLocalEnv(): void
     {
+        Storage::fake('docs');
+
+        Storage::disk('docs')->put('index.html', '<h1>Documentation</h1>');
+        Storage::disk('docs')->put('css/base.css', '.base { color: #000; }');
+
         $this->app->detectEnvironment(static function () {
             return 'local';
         });

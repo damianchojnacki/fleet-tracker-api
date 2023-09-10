@@ -68,8 +68,6 @@ jobs:
         run: php artisan key:generate
       - name: Link storage
         run: php artisan storage:link
-      - name: Generate docs
-        run: ./generate_docs.sh
       - name: Static analysis
         run: ./vendor/bin/phpstan analyse --error-format github --ansi --no-progress
       - name: Code insights
