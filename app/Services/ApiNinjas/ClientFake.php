@@ -10,6 +10,9 @@ class ClientFake extends Client
 {
     public PendingRequest $request;
 
+    /**
+     * @param array<string,mixed> $callback
+     */
     public function __construct(array $callback = [])
     {
         $callback = collect($callback)->mapWithKeys(function ($item, $key) {

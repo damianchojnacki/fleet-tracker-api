@@ -11,6 +11,9 @@ class ApiNinjasFacade extends Facade
         return 'api-ninjas';
     }
 
+    /**
+     * @param array<string,mixed> $callback
+     */
     public static function fake(array $callback = []): ClientFake
     {
         static::swap($fake = new ClientFake($callback));
