@@ -9,6 +9,9 @@ jobs:
       architecture: ${{ steps.insights.outputs.architecture }}
       complexity: ${{ steps.insights.outputs.complexity }}
       style: ${{ steps.insights.outputs.style }}
+    strategy:
+      matrix:
+        php: [ 8.2 ]
     steps:
       - uses: actions/checkout@v3
       - name: Extract branch name
@@ -24,6 +27,12 @@ jobs:
               EXPORT_VALUE="${TMP_GITHUB_REF}"
           fi
           echo "branch=${EXPORT_VALUE}" >> $GITHUB_OUTPUT
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite
+          coverage: xdebug
       - name: Copy .env
         run: php -r "file_exists('.env') || copy('.env.example', '.env');"
       - name: Cache composer dependencies
