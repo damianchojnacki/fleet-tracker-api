@@ -37,7 +37,7 @@ class AuthenticationTest extends TestCase
     {
         $user = User::factory()->create();
 
-        foreach(range(0, 5) as $i){
+        foreach (range(0, 5) as $i) {
             $response = $this->postJson(route('login'), [
                 'email' => $user->email,
                 'password' => Str::random(),

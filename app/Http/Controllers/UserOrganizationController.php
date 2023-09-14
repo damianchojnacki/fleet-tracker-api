@@ -2,13 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\AcceptOrganizationInvitationRequest;
-use App\Http\Requests\Auth\CancelOrganizationInvitationRequest;
 use App\Http\Requests\CreateUserOrganizationRequest;
 use App\Models\Organization;
-use App\Models\OrganizationInvitation;
-use Illuminate\Http\JsonResponse;
 
 class UserOrganizationController extends Controller
 {

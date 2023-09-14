@@ -19,7 +19,7 @@ class TrustHosts extends Middleware
         ];
     }
 
-    public function frontendDomain(): string|null
+    public function frontendDomain(): ?string
     {
         return parse_url($this->app['config']->get('app.frontend_url'), PHP_URL_HOST) ?? null;
     }

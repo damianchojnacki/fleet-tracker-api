@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Models\CarOperation;
 use Illuminate\Foundation\Http\FormRequest;
 
 class DeleteCarOperationRequest extends FormRequest

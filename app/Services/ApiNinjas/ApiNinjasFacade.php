@@ -12,7 +12,7 @@ class ApiNinjasFacade extends Facade
     }
 
     /**
-     * @param array<string,mixed> $callback
+     * @param  array<string,mixed>  $callback
      */
     public static function fake(array $callback = []): ClientFake
     {

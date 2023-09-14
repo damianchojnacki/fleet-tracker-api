@@ -3,19 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateCarOperationRequest;
-use App\Http\Requests\CreateUserTripRequest;
 use App\Http\Requests\DeleteCarOperationRequest;
-use App\Http\Requests\DeleteUserTripRequest;
 use App\Http\Requests\ListCarOperationRequest;
-use App\Http\Requests\ShowUserTripRequest;
 use App\Http\Requests\UpdateCarOperationRequest;
-use App\Http\Requests\UpdateUserTripRequest;
 use App\Http\Resources\CarOperationResource;
-use App\Http\Resources\TripResource;
 use App\Models\Car;
 use App\Models\CarOperation;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Throwable;
 

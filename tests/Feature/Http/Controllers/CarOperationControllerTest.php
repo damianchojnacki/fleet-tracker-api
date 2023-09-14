@@ -128,7 +128,7 @@ class CarOperationControllerTest extends TestCase
         $this->actingAs($user)
             ->putJson(route('cars.operations.update', [
                 'car' => $car,
-                'operation' => $operation
+                'operation' => $operation,
             ]), $body->toArray())
             ->assertForbidden();
     }
@@ -149,7 +149,7 @@ class CarOperationControllerTest extends TestCase
         $this->actingAs($user)
             ->deleteJson(route('cars.operations.destroy', [
                 'car' => $car,
-                'operation' => $operation
+                'operation' => $operation,
             ]))->assertSuccessful();
 
         // Ensure the trip is deleted from the database
@@ -169,7 +169,7 @@ class CarOperationControllerTest extends TestCase
         $this->actingAs($user)
             ->deleteJson(route('cars.operations.destroy', [
                 'car' => $car,
-                'operation' => $operation
+                'operation' => $operation,
             ]))
             ->assertForbidden();
     }

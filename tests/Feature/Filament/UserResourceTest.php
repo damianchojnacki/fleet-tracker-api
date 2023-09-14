@@ -6,8 +6,6 @@ use App\Filament\Resources\UserResource;
 use App\Filament\Resources\UserResource\Pages\ListUsers;
 use App\Models\Organization;
 use App\Models\User;
-use Database\Factories\UserFactory;
-use Filament\Facades\Filament;
 use Livewire\Livewire;
 
 /**

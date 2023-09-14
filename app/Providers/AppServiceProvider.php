@@ -15,7 +15,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        URL::macro('signature', function (string $route, array $attributes = [], ?Carbon $expiration = null) {
+        URL::macro('signature', function (string $route, array $attributes = [], Carbon $expiration = null) {
             $url = URL::signedRoute($route, $attributes, $expiration);
 
             $url = parse_url($url, PHP_URL_QUERY);

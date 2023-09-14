@@ -2,16 +2,7 @@
 
 namespace Tests\Unit;
 
-use ApiNinjas;
-use App\Models\User;
-use App\Services\ApiNinjas\Structs\CarStruct;
 use App\Services\CarRepository;
-use App\Services\Frontend;
-use Exception;
-use Illuminate\Auth\Notifications\ResetPassword;
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Str;
 use Tests\TestCase;
 
 /**

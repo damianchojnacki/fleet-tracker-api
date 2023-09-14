@@ -3,7 +3,6 @@
 namespace App\Http\Requests;
 
 use App\Enums\CarOperationType;
-use App\Models\CarOperation;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 

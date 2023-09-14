@@ -18,18 +18,18 @@ class RouteServiceProviderTest extends TestCase
         config()->set('app.api_rate_limit_by_minute', 5);
         config()->set('app.frontend_url', 'http://127.0.0.1:3000');
 
-        foreach(range(1, 5) as $i) {
+        foreach (range(1, 5) as $i) {
             $this->getJson(route('brands.index'), [
-                'X-Forwarded-For' => '192.168.0.1'
+                'X-Forwarded-For' => '192.168.0.1',
             ])->assertSuccessful();
         }
 
         $this->getJson(route('brands.index'), [
-            'X-Forwarded-For' => '192.168.0.1'
+            'X-Forwarded-For' => '192.168.0.1',
         ])->assertTooManyRequests();
 
         $this->getJson(route('brands.index'), [
-            'X-Forwarded-For' => '192.168.0.2'
+            'X-Forwarded-For' => '192.168.0.2',
         ])->assertSuccessful();
     }
 }

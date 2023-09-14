@@ -4,7 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Car;
 use App\Models\CarOperation;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class CarOperationSeeder extends Seeder
@@ -14,7 +13,7 @@ class CarOperationSeeder extends Seeder
      */
     public function run(): void
     {
-        Car::with('users')->get()->each(function (Car $car){
+        Car::with('users')->get()->each(function (Car $car) {
             CarOperation::factory()
                 ->count(rand(0, 10))
                 ->recycle($car)

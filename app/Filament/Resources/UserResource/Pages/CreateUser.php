@@ -2,7 +2,6 @@
 
 namespace App\Filament\Resources\UserResource\Pages;
 
-use App\Filament\Resources\CarResource;
 use App\Filament\Resources\UserResource;
 use Filament\Facades\Filament;
 use Filament\Resources\Pages\CreateRecord;

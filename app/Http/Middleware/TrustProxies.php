@@ -14,7 +14,7 @@ class TrustProxies extends Middleware
         ];
     }
 
-    public function frontendDomain(): string|null
+    public function frontendDomain(): ?string
     {
         return parse_url(config('app.frontend_url'), PHP_URL_HOST) ?? null;
     }

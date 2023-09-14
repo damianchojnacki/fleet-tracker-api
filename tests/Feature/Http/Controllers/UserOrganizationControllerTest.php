@@ -3,10 +3,8 @@
 namespace Tests\Feature\Http\Controllers;
 
 use App\Models\Organization;
-use App\Models\OrganizationInvitation;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\URL;
 use Tests\TestCase;
 
 /**

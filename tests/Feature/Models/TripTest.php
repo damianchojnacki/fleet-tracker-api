@@ -2,9 +2,7 @@
 
 namespace Tests\Feature\Models;
 
-use App\Models\CarBrand;
 use App\Models\Trip;
-use App\Models\TripPoint;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 

@@ -16,11 +16,11 @@ class GeoServiceTest extends TestCase
 
         $this->assertEquals(226.3, round($distance, 1));
 
-        $distance = GeoService::calculateDistanceBetweenTwoPoints(53.1222, 17.9945, 52.2327, 21.0141,);
+        $distance = GeoService::calculateDistanceBetweenTwoPoints(53.1222, 17.9945, 52.2327, 21.0141);
 
         $this->assertEquals(226.3, round($distance, 1));
 
-        $distance = GeoService::calculateDistanceBetweenTwoPoints(53.1322, 23.1687, 52.2327, 21.0141,);
+        $distance = GeoService::calculateDistanceBetweenTwoPoints(53.1322, 23.1687, 52.2327, 21.0141);
 
         $this->assertEquals(176.3, round($distance, 1));
     }

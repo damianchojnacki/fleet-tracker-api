@@ -6,7 +6,7 @@ use Illuminate\Support\Collection;
 
 trait StringEnumHelpers
 {
-    abstract  public function getName(): string;
+    abstract public function getName(): string;
 
     public static function collect(): Collection
     {
@@ -15,11 +15,11 @@ trait StringEnumHelpers
 
     public static function values(): array
     {
-        return static::collect()->map(fn(self $type) => $type->value)->toArray();
+        return static::collect()->map(fn (self $type) => $type->value)->toArray();
     }
 
     public static function names(): array
     {
-        return static::collect()->map(fn(self $type) => $type->getName())->toArray();
+        return static::collect()->map(fn (self $type) => $type->getName())->toArray();
     }
 }

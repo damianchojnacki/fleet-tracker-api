@@ -2,7 +2,6 @@
 
 namespace Tests\Feature\Http\Controllers;
 
-use App\Models\CarBrand;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Storage;
 use Tests\TestCase;

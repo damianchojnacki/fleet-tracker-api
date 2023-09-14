@@ -2,8 +2,6 @@
 
 namespace App\Http\Requests;
 
-use App\Models\Car;
-use App\Models\Trip;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CreateUserOrganizationRequest extends FormRequest

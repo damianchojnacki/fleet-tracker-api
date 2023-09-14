@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use App\Models\Organization;
 use App\Models\OrganizationInvitation;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -16,7 +15,7 @@ class OrganizationInvitationSeeder extends Seeder
     {
         $user = User::factory()->create([
             'organization_id' => null,
-            'email' => 'invited@example.com'
+            'email' => 'invited@example.com',
         ]);
 
         OrganizationInvitation::factory()->create([
