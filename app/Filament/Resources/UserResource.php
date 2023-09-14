@@ -86,8 +86,9 @@ class UserResource extends Resource
 
         return $table
             ->columns([
-                TextColumn::make('organization.name')
-                    ->hidden(!$user->isAdmin())
+                TextColumn::make('id')
+                    ->label('ID')
+                    ->numeric()
                     ->sortable()
                     ->searchable(),
                 TextColumn::make('firstname')
@@ -116,12 +117,6 @@ class UserResource extends Resource
                     ->toggle()
                     ->query(fn (Builder $query) => $query->where('is_admin', true))
                     ->label('Admin'),
-                SelectFilter::make('organization')
-                    ->hidden(!$user->isAdmin())
-                    ->relationship('organization', 'name')
-                    ->searchable()
-                    ->preload()
-                    ->native(false),
             ])
             ->actions([
                 EditAction::make(),

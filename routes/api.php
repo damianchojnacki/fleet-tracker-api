@@ -32,7 +32,7 @@ Route::group([
 
     Route::put('organization-invitations/{invitation}', [OrganizationInvitationController::class, 'accept'])
         ->name('organization-invitations.accept')
-        ->middleware('signed');
+        ->middleware(['signed', 'throttle:6,1']);
 
     Route::delete('organization-invitations/{invitation}', [OrganizationInvitationController::class, 'cancel'])
         ->name('organization-invitations.cancel');

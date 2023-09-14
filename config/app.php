@@ -63,6 +63,8 @@ return [
 
     'api_rate_limit_by_minute' => env('API_RATE_LIMIT_BY_MINUTE', 60),
 
+    'version' => '1.0.0',
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone

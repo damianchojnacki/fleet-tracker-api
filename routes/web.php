@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return ['Laravel' => app()->version()];
+    return ['version' => config('app.version')];
 })->name('homepage');
 
 Route::get('docs/{path?}', DocsController::class)

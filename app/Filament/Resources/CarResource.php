@@ -35,21 +35,8 @@ class CarResource extends Resource
 
     public static function form(Form $form): Form
     {
-        /** @var User $user */
-        $user = Auth::user();
-
         return $form
             ->schema([
-                Select::make('organization_id')
-                    ->relationship(name: 'organization', titleAttribute: 'name')
-                    ->allowHtml()
-                    ->getOptionLabelFromRecordUsing(fn (Organization $organization) => "<b>{$organization->id}</b> - {$organization->name}"
-                    )
-                    ->searchable(['name', 'id'])
-                    ->default($user->organization->id)
-                    ->required()
-                    ->hidden(! $user->isAdmin())
-                    ->preload(),
                 Toggle::make('is_active')
                     ->default(true),
                 TextInput::make('plate_number'),
@@ -121,6 +108,7 @@ class CarResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('id')
+                    ->label('ID')
                     ->numeric()
                     ->sortable()
                     ->searchable(),
