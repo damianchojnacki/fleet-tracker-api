@@ -54,6 +54,9 @@ class CarResource extends Resource
                     ->default(true),
                 TextInput::make('plate_number'),
                 TextInput::make('vin'),
+                TextInput::make('mileage')
+                    ->numeric()
+                    ->minValue(0),
                 Select::make('brand_id')
                     ->relationship(name: 'brand', titleAttribute: 'name')
                     ->searchable(['name'])

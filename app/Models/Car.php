@@ -44,4 +44,9 @@ class Car extends Model
     {
         return $this->belongsTo(Organization::class);
     }
+
+    public function operations(): HasMany
+    {
+        return $this->hasMany(CarOperation::class);
+    }
 }

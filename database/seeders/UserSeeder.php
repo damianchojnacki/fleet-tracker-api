@@ -13,7 +13,6 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         User::factory()->create([
-            'organization_id' => null,
             'car_id' => null,
             'firstname' => 'Test',
             'lastname' => 'User',
@@ -21,7 +20,6 @@ class UserSeeder extends Seeder
         ]);
 
         User::factory()->create([
-            'organization_id' => null,
             'car_id' => null,
             'firstname' => 'Test',
             'lastname' => 'Admin',

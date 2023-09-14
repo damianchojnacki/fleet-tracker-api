@@ -27,6 +27,7 @@ class CarFactory extends Factory
             'brand_id' => CarBrand::inRandomOrder()->first()?->id,
             'plate_number' => Str::upper(dechex(rand(11, 15)).dechex(rand(11, 15)).bin2hex(random_bytes(3))),
             'vin' => rand(10000000000000000, 99999999999999999),
+            'mileage' => rand(10000, 500000),
             'is_active' => $this->faker->boolean,
             'specs' => [
                 'year' => rand(2000, 2023),

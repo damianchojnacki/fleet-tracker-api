@@ -18,6 +18,7 @@ class DatabaseSeeder extends Seeder
             OrganizationInvitationSeeder::class,
             TripSeeder::class,
             TripPointSeeder::class,
+            CarOperationSeeder::class,
         ]);
     }
 }

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignIdFor(Organization::class)->constrained()->cascadeOnDelete();
             $table->string('plate_number')->nullable();
             $table->string('vin')->nullable();
+            $table->unsignedInteger('mileage')->nullable();
             $table->boolean('is_active')->default(true);
             $table->json('specs')->default('{}');
             $table->timestamps();
