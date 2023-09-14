@@ -16,9 +16,6 @@
         <include>
             <directory suffix=".php">./app</directory>
         </include>
-        <exclude>
-            <directory suffix=".php">./app/Filament</directory>
-        </exclude>
         <report>
             <text outputFile="coverage.txt" />
         </report>
