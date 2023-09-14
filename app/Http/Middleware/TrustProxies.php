@@ -7,12 +7,17 @@ use Illuminate\Http\Request;
 
 class TrustProxies extends Middleware
 {
-    /**
-     * The trusted proxies for this application.
-     *
-     * @var array<int, string>|string|null
-     */
-    protected $proxies;
+    protected function proxies(): array
+    {
+        return [
+            $this->frontendDomain(),
+        ];
+    }
+
+    public function frontendDomain(): string|null
+    {
+        return parse_url(config('app.frontend_url'), PHP_URL_HOST) ?? null;
+    }
 
     /**
      * The headers that should be used to detect proxies.

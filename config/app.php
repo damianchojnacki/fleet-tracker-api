@@ -61,6 +61,8 @@ return [
 
     'asset_url' => env('ASSET_URL'),
 
+    'api_rate_limit_by_minute' => env('API_RATE_LIMIT_BY_MINUTE', 60),
+
     /*
     |--------------------------------------------------------------------------
     | Application Timezone

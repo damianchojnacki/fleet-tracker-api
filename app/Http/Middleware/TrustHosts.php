@@ -14,7 +14,13 @@ class TrustHosts extends Middleware
     public function hosts(): array
     {
         return [
+            $this->frontendDomain(),
             $this->allSubdomainsOfApplicationUrl(),
         ];
+    }
+
+    public function frontendDomain(): string|null
+    {
+        return parse_url($this->app['config']->get('app.frontend_url'), PHP_URL_HOST) ?? null;
     }
 }
