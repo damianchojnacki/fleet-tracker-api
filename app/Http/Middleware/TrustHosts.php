@@ -9,7 +9,7 @@ class TrustHosts extends Middleware
     /**
      * Get the host patterns that should be trusted.
      *
-     * @return array<int, string|null>
+     * @return array<string|null|false>
      */
     public function hosts(): array
     {
@@ -19,8 +19,8 @@ class TrustHosts extends Middleware
         ];
     }
 
-    public function frontendDomain(): ?string
+    public function frontendDomain(): string | false | null
     {
-        return parse_url($this->app['config']->get('app.frontend_url'), PHP_URL_HOST) ?? null;
+        return parse_url(config('app.frontend_url'), PHP_URL_HOST) ?? null;
     }
 }

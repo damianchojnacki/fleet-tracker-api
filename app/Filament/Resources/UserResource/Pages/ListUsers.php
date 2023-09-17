@@ -3,6 +3,7 @@
 namespace App\Filament\Resources\UserResource\Pages;
 
 use App\Filament\Resources\UserResource;
+use App\Models\Organization;
 use App\Models\OrganizationInvitation;
 use Filament\Actions\Action;
 use Filament\Actions\CreateAction;
@@ -19,6 +20,9 @@ class ListUsers extends ListRecords
 
     protected function getHeaderActions(): array
     {
+        /** @var Organization $organization */
+        $organization = Filament::getTenant();
+
         return [
             CreateAction::make()
                 ->label('New driver'),
@@ -29,7 +33,7 @@ class ListUsers extends ListRecords
                         ->required(),
                 ])
                 ->label('Invite driver')
-                ->action(function (array $data): void {
+                ->action(function (array $data) use ($organization): void {
                     if (OrganizationInvitation::where('email', $data['email'])->exists()) {
                         Notification::make()
                             ->title('User already exists')
@@ -41,7 +45,7 @@ class ListUsers extends ListRecords
 
                     OrganizationInvitation::create([
                         'email' => $data['email'],
-                        'organization_id' => Filament::getTenant()->id,
+                        'organization_id' => $organization->id,
                     ])->sendNotification();
 
                     Notification::make()

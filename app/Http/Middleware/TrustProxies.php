@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class TrustProxies extends Middleware
 {
+    /**
+     * The trusted proxies for this application.
+     *
+     * @return array<string|null|false>
+     */
     protected function proxies(): array
     {
         return [
@@ -14,7 +19,7 @@ class TrustProxies extends Middleware
         ];
     }
 
-    public function frontendDomain(): ?string
+    public function frontendDomain(): string | false | null
     {
         return parse_url(config('app.frontend_url'), PHP_URL_HOST) ?? null;
     }
