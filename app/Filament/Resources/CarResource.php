@@ -96,7 +96,12 @@ class CarResource extends Resource
                     ->minValue(0)
                     ->maxValue(100)
                     ->step(0.1),
-                TextInput::make('color'),
+                TextInput::make('specs.color'),
+                TextInput::make('mileage')
+                    ->numeric()
+                    ->minValue(0)
+                    ->step(1)
+                    ->suffix('km'),
             ]);
     }
 

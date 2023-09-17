@@ -40,6 +40,14 @@ class Organization extends Model
     }
 
     /**
+     * Get all the users that belong to the organization.
+     */
+    public function cars(): HasMany
+    {
+        return $this->hasMany(Car::class);
+    }
+
+    /**
      * Determine if the given user belongs to the organization.
      */
     public function hasUser(User $user): bool

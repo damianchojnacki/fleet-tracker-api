@@ -41,16 +41,6 @@ class UserResource extends Resource
 
         return $form
             ->schema([
-                Select::make('organization_id')
-                    ->relationship(name: 'organization', titleAttribute: 'name')
-                    ->allowHtml()
-                    ->getOptionLabelFromRecordUsing(fn (Organization $organization) => "<b>{$organization->id}</b> - {$organization->name}"
-                    )
-                    ->searchable(['name', 'id'])
-                    ->default($user->organization->id)
-                    ->required()
-                    ->hidden(! $user->isAdmin())
-                    ->preload(),
                 TextInput::make('firstname')
                     ->required(),
                 TextInput::make('lastname')
