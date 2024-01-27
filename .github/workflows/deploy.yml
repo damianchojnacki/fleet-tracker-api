@@ -29,8 +29,8 @@ jobs:
           file: ./docker/dev/Dockerfile
           push: true
           tags: daamian3/fleet-tracker:latest
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          #cache-from: type=gha
+          #cache-to: type=gha,mode=max
 #      - uses: ravsamhq/notify-slack-action@v2
 #        if: always()
 #        with:
