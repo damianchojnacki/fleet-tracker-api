@@ -21,7 +21,7 @@ class OrganizationChatMessageController extends Controller
         return ChatMessage::with(['author', 'user'])
             ->whereHas('user', fn (Builder $q) => $q->whereRelation('organization', 'id', $request->user()->organization->id)
             )
-            ->latest()
+            ->oldest()
             ->get()
             ->groupBy('user_id')
             ->map(fn ($messages) => ChatMessageResource::collection($messages));

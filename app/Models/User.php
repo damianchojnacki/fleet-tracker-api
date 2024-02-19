@@ -94,6 +94,6 @@ class User extends Authenticatable implements FilamentUser, HasTenants, MustVeri
 
     public function chatMessages(): HasMany
     {
-        return $this->hasMany(ChatMessage::class)->latest();
+        return $this->hasMany(ChatMessage::class)->oldest();
     }
 }
