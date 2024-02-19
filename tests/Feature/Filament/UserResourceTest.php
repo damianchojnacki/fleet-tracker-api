@@ -93,6 +93,7 @@ class UserResourceTest extends FilamentTestCase
         $this->assertEquals($data['firstname'], $user->firstname);
         $this->assertEquals($data['lastname'], $user->lastname);
         $this->assertEquals($data['email'], $user->email);
+        $this->assertEquals($data['car_id'], $user->car_id);
         $this->assertEquals($this->user->organization->id, $user->organization->id);
     }
 
@@ -117,6 +118,7 @@ class UserResourceTest extends FilamentTestCase
         $this->assertEquals($data['firstname'], $user->firstname);
         $this->assertEquals($data['lastname'], $user->lastname);
         $this->assertEquals($data['email'], $user->email);
+        $this->assertEquals($data['car_id'], $user->car_id);
         $this->assertEquals($this->user->organization->id, $user->organization->id);
     }
 

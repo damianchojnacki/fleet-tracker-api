@@ -5,7 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\UserResource\Pages\CreateUser;
 use App\Filament\Resources\UserResource\Pages\EditUser;
 use App\Filament\Resources\UserResource\Pages\ListUsers;
-use App\Models\Organization;
+use App\Models\Car;
 use App\Models\User;
 use Auth;
 use Carbon\Carbon;
@@ -59,6 +59,12 @@ class UserResource extends Resource
                     ->hidden(! $user->isAdmin())
                     ->label('Email Verified')
                     ->dehydrateStateUsing(fn (?string $state): ?Carbon => filled($state) ? now() : null),
+                Select::make('car_id')
+                    ->label('Car')
+                    ->options($user->organization->cars()->with('brand')->get()->mapWithKeys(fn($car) => [
+                        $car->id => "{$car->brand->name} {$car->specs['model']} {$car->specs['year']}"
+                    ]))
+                    ->searchable()
             ]);
     }
 
@@ -93,6 +99,8 @@ class UserResource extends Resource
                     ->hidden(! $user->isAdmin())
                     ->sortable()
                     ->disabled(),
+                TextColumn::make('car')
+                    ->formatStateUsing(fn (?Car $state): string => $state ? "{$state->brand?->name} {$state->specs['model']} {$state->specs['year']}" : ''),
             ])
             ->filters([
                 Filter::make('is_admin')
