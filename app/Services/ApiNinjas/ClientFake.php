@@ -2,6 +2,7 @@
 
 namespace App\Services\ApiNinjas;
 
+use Exception;
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Facades\Http;
 
@@ -10,10 +11,14 @@ class ClientFake extends Client
     public PendingRequest $request;
 
     /**
-     * @param  array<string,mixed>  $callback
+     * @param array<string,mixed> $callback
+     *
+     * @throws Exception
      */
     public function __construct(array $callback = [])
     {
+        parent::__construct();
+
         $callback = collect($callback)->mapWithKeys(function ($item, $key) {
             return [static::$url.$key => $item];
         })->toArray();
