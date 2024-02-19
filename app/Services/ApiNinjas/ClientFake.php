@@ -11,7 +11,7 @@ class ClientFake extends Client
     public PendingRequest $request;
 
     /**
-     * @param array<string,mixed> $callback
+     * @param  array<string,mixed>  $callback
      *
      * @throws Exception
      */

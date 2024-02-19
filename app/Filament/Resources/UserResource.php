@@ -61,10 +61,10 @@ class UserResource extends Resource
                     ->dehydrateStateUsing(fn (?string $state): ?Carbon => filled($state) ? now() : null),
                 Select::make('car_id')
                     ->label('Car')
-                    ->options($user->organization->cars()->with('brand')->get()->mapWithKeys(fn($car) => [
-                        $car->id => "{$car->brand->name} {$car->specs['model']} {$car->specs['year']}"
+                    ->options($user->organization->cars()->with('brand')->get()->mapWithKeys(fn ($car) => [
+                        $car->id => "{$car->brand->name} {$car->specs['model']} {$car->specs['year']}",
                     ]))
-                    ->searchable()
+                    ->searchable(),
             ]);
     }
 

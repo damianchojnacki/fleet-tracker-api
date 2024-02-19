@@ -141,7 +141,7 @@ class UserResourceTest extends FilamentTestCase
 
         Livewire::test(ListUsers::class)
             ->callAction('invite', [
-                'email' => $email = 'test@example.com'
+                'email' => $email = 'test@example.com',
             ]);
 
         Notification::assertSentOnDemand(InvitedToOrganization::class, function ($notification, $channels, $notifable) use ($email) {
@@ -156,7 +156,7 @@ class UserResourceTest extends FilamentTestCase
         OrganizationInvitation::factory()
             ->recycle($this->user->organization)
             ->create([
-                'email' => $email = 'test@example.com'
+                'email' => $email = 'test@example.com',
             ]);
 
         Livewire::test(ListUsers::class)

@@ -29,7 +29,7 @@ class AdminPanelProvider extends PanelProvider
             ->id('admin')
             ->path('admin')
             ->tenant(Organization::class)
-            ->tenantMenu(fn() => Auth::user()->isAdmin())
+            ->tenantMenu(fn () => Auth::user()->isAdmin())
             ->login()
             ->colors([
                 'primary' => Color::Amber,
