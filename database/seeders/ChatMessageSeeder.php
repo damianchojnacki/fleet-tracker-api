@@ -20,10 +20,11 @@ class ChatMessageSeeder extends Seeder
                 $user->chatMessages()->saveMany(
                     ChatMessage::factory()
                         ->count(rand(3, 10))
-                        ->make([
+                        ->sequence(...collect(range(1, 10))->map(fn($i) => [
                             'user_id' => $user->id,
-                            'author_id' => $user->organization->owner_id,
-                        ]),
+                            'author_id' => $i % 2 == 0 ? $user->organization->owner_id : $user->id,
+                        ])->toArray())
+                        ->make(),
                 );
             });
     }
