@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\UserCarController;
+use App\Http\Controllers\UserChatMessageController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\UserOrganizationController;
 use App\Http\Controllers\UserTripController;
@@ -17,3 +18,5 @@ Route::apiResource('trips', UserTripController::class);
 
 Route::apiResource('trips.points', UserTripPointController::class)
     ->only('store');
+
+Route::apiResource('chat-messages', UserChatMessageController::class)->only(['index', 'store']);

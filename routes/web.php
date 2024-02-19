@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DocsController;
+use App\Http\Controllers\OrganizationChatMessageController;
 use Dedoc\Scramble\Http\Middleware\RestrictedDocsAccess;
 use Illuminate\Support\Facades\Route;
 
@@ -23,3 +24,5 @@ Route::get('docs/{path?}', DocsController::class)
     ->middleware(RestrictedDocsAccess::class)
     ->where('path', '(.*)')
     ->name('docs');
+
+Route::apiResource('chat-messages', OrganizationChatMessageController::class)->only(['index']);

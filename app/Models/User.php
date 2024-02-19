@@ -91,4 +91,9 @@ class User extends Authenticatable implements FilamentUser, HasTenants, MustVeri
         /** @phpstan-ignore-next-line  */
         return $this->ownsOrganization($tenant) || $this->isAdmin();
     }
+
+    public function chatMessages(): HasMany
+    {
+        return $this->hasMany(ChatMessage::class)->latest();
+    }
 }

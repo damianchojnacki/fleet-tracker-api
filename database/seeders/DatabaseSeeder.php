@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
             TripSeeder::class,
             TripPointSeeder::class,
             CarOperationSeeder::class,
+            ChatMessageSeeder::class,
         ]);
     }
 }
