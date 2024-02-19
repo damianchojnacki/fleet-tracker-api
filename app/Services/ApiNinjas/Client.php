@@ -24,10 +24,13 @@ class Client
             ->baseUrl(static::$url);
     }
 
+    /**
+     * @throws Exception
+     */
     public function validateConfig(): void
     {
         if (! config('services.api_ninjas.api_key')) {
-            throw new \Exception('Please set your API_NINJAS_API_KEY in the .env file.');
+            throw new Exception('Please set your API_NINJAS_API_KEY in the .env file.');
         }
     }
 
