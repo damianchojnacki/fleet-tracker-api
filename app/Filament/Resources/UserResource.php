@@ -9,6 +9,7 @@ use App\Models\Car;
 use App\Models\User;
 use Auth;
 use Carbon\Carbon;
+use Filament\Facades\Filament;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -61,9 +62,7 @@ class UserResource extends Resource
                     ->dehydrateStateUsing(fn (?string $state): ?Carbon => filled($state) ? now() : null),
                 Select::make('car_id')
                     ->label('Car')
-                    ->options($user->organization->cars()->with('brand')->get()->mapWithKeys(fn ($car) => [
-                        $car->id => "{$car->brand->name} {$car->specs['model']} {$car->specs['year']}",
-                    ]))
+                    ->options(static::getCarsSelectOptions())
                     ->searchable(),
             ]);
     }
@@ -137,5 +136,16 @@ class UserResource extends Resource
             'create' => CreateUser::route('/create'),
             'edit' => EditUser::route('/{record}/edit'),
         ];
+    }
+
+    private static function getCarsSelectOptions()
+    {
+        $user = Auth::user();
+
+        $query = $user->isAdmin() ? Car::query() : Filament::getTenant()->cars();
+
+        return $query->with('brand')->get()->mapWithKeys(fn ($car) => [
+            $car->id => "{$car->brand->name} {$car->specs['model']} {$car->specs['year']}",
+        ]);
     }
 }
