@@ -24,7 +24,12 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'car_id' => Car::inRandomOrder()->first()?->id,
+            'car_id' => function (array $attributes) {
+                return Car::whereRelation('organization', 'id', $attributes['organization_id'])
+                    ->inRandomOrder()
+                    ->first()
+                    ?->id;
+            },
             'organization_id' => Organization::inRandomOrder()->first()?->id,
             'firstname' => $this->faker->firstName(),
             'lastname' => $this->faker->lastName(),
