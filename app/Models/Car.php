@@ -10,8 +10,10 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @property int $id
- * @property string $plate_number
- * @property string $vin
+ * @property string|null $plate_number
+ * @property string|null $vin
+ * @property int|null $mileage
+ * @property string|null $color
  * @property array<string,int|float|string> $specs
  * @property bool $is_active
  * @property Carbon $created_at
