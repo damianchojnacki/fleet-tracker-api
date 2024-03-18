@@ -1,12 +1,12 @@
 {
-    "name": "laravel/laravel",
+    "name": "damianchojnacki/fleet-tracker-api",
     "type": "project",
-    "description": "The skeleton application for the Laravel framework.",
+    "description": "Track your vehicles and employees trips.",
     "keywords": [
-        "laravel",
-        "framework"
+        "fleet",
+        "tracker"
     ],
-    "license": "MIT",
+    "license": "AGPL-3.0",
     "require": {
         "php": "^8.1",
         "calebporzio/sushi": "^2.4",
