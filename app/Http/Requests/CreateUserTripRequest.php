@@ -25,6 +25,10 @@ class CreateUserTripRequest extends FormRequest
     {
         return [
             'car_id' => ['required', 'exists:cars,id'],
+            'from' => ['nullable', 'string', 'max:255'],
+            'to' => ['nullable', 'string', 'max:255'],
+            'note' => ['nullable', 'string', 'max:255'],
+            'distance' => ['nullable', 'numeric', 'min:0'],
         ];
     }
 }

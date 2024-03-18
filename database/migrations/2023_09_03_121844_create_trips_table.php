@@ -17,9 +17,11 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(Car::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();
-            $table->decimal('distance', 8, 2)->default(0);
+            $table->decimal('distance')->default(0);
             $table->boolean('is_finished')->default(false);
-            $table->string('note', 255)->nullable();
+            $table->string('from')->nullable();
+            $table->string('to')->nullable();
+            $table->string('note')->nullable();
             $table->timestamps();
         });
     }

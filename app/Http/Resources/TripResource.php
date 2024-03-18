@@ -21,6 +21,8 @@ class TripResource extends JsonResource
             'car_id' => $this->car_id,
             'user_id' => $this->user_id,
             'note' => $this->note,
+            'from' => $this->from,
+            'to' => $this->to,
             'is_finished' => $this->is_finished,
             'points' => TripPointResource::collection($this->whenLoaded('points')),
             'car' => new CarResource($this->whenLoaded('car')),

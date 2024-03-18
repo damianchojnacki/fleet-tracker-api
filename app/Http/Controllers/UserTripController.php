@@ -40,8 +40,7 @@ class UserTripController extends Controller
      */
     public function store(CreateUserTripRequest $request): Trip
     {
-        $trip = new Trip();
-        $trip->car()->associate($request->car_id);
+        $trip = new Trip($request->validated());
         $trip->user()->associate($request->user());
         $trip->save();
 

@@ -88,10 +88,12 @@ class UserTripControllerTest extends TestCase
             'organization_id' => $car->organization_id,
         ]);
 
+        $body = Trip::factory()->make([
+            'car_id' => $car->id,
+        ]);
+
         $response = $this->actingAs($user)
-            ->postJson(route('user.trips.store'), [
-                'car_id' => $car->id,
-            ])
+            ->postJson(route('user.trips.store'), $body->toArray())
             ->assertSuccessful();
 
         $this->assertNotNull($response->json());
@@ -101,6 +103,10 @@ class UserTripControllerTest extends TestCase
         $this->assertNotNull($trip);
         $this->assertEquals($car->id, $trip->car->id);
         $this->assertEquals($user->id, $trip->user->id);
+        $this->assertEquals($body->note, $trip->note);
+        $this->assertEquals($body->from, $trip->from);
+        $this->assertEquals($body->to, $trip->to);
+        $this->assertEquals($body->distance, $trip->distance);
     }
 
     public function testUserCanNotCreateTripToCarThatDoesNotBelongs(): void
@@ -131,18 +137,20 @@ class UserTripControllerTest extends TestCase
             ->recycle($user)
             ->create();
 
-        $data = Trip::factory()->make();
+        $body = Trip::factory()->make();
 
         $this->actingAs($user)
-            ->putJson(route('user.trips.update', $trip), $data->toArray())
+            ->putJson(route('user.trips.update', $trip), $body->toArray())
             ->assertSuccessful();
 
         $trip = $trip->fresh();
 
         $this->assertEquals($user->id, $trip->user->id);
-        $this->assertEquals($car->id, $trip->car->id);
-        $this->assertEquals($data->note, $trip->note);
-        $this->assertEquals($data->distance, $trip->distance);
+        $this->assertEquals($body->car_id, $trip->car->id);
+        $this->assertEquals($body->note, $trip->note);
+        $this->assertEquals($body->from, $trip->from);
+        $this->assertEquals($body->to, $trip->to);
+        $this->assertEquals($body->distance, $trip->distance);
     }
 
     public function testUserCanNotUpdateTripThatDoesNotBelongs(): void

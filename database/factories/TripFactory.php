@@ -27,6 +27,8 @@ class TripFactory extends Factory
             'distance' => $this->faker->randomFloat(2, 0, 9999.99),
             'is_finished' => $this->faker->boolean,
             'note' => $this->faker->paragraph(rand(0, 2)),
+            'from' => $this->faker->sentence(),
+            'to' => $this->faker->sentence(),
         ];
     }
 }

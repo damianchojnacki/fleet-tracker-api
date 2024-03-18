@@ -13,6 +13,8 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property float $distance
  * @property bool $is_finished
  * @property string $note
+ * @property string $from
+ * @property string $to
  * @property Carbon $created_at
  * @property Carbon $updated_at
  */
