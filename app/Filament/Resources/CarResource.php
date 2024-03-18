@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Exports\CarExporter;
 use App\Filament\Resources\CarResource\Pages\CreateCar;
 use App\Filament\Resources\CarResource\Pages\EditCar;
 use App\Filament\Resources\CarResource\Pages\ListCars;
@@ -19,6 +20,7 @@ use Filament\Tables\Actions\CreateAction;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Actions\ExportAction;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Filters\SelectFilter;
@@ -149,6 +151,10 @@ class CarResource extends Resource
             ])
             ->emptyStateActions([
                 CreateAction::make(),
+            ])
+            ->headerActions([
+                ExportAction::make()
+                    ->exporter(CarExporter::class),
             ]);
     }
 
