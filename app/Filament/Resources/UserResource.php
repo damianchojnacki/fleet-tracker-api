@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Exports\UserExporter;
 use App\Filament\Resources\UserResource\Pages\CreateUser;
 use App\Filament\Resources\UserResource\Pages\EditUser;
 use App\Filament\Resources\UserResource\Pages\ListUsers;
@@ -9,7 +10,6 @@ use App\Models\Car;
 use App\Models\User;
 use Auth;
 use Carbon\Carbon;
-use Filament\Facades\Filament;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
@@ -20,11 +20,13 @@ use Filament\Tables\Actions\CreateAction;
 use Filament\Tables\Actions\DeleteAction;
 use Filament\Tables\Actions\DeleteBulkAction;
 use Filament\Tables\Actions\EditAction;
+use Filament\Tables\Actions\ExportAction;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
 use Filament\Tables\Filters\Filter;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Hash;
 
 class UserResource extends Resource
@@ -62,7 +64,7 @@ class UserResource extends Resource
                     ->dehydrateStateUsing(fn (?string $state): ?Carbon => filled($state) ? now() : null),
                 Select::make('car_id')
                     ->label('Car')
-                    ->options(static::getCarsSelectOptions())
+                    ->options(self::getCarsSelectOptions())
                     ->searchable(),
             ]);
     }
@@ -119,6 +121,10 @@ class UserResource extends Resource
             ])
             ->emptyStateActions([
                 CreateAction::make(),
+            ])
+            ->headerActions([
+                ExportAction::make()
+                    ->exporter(UserExporter::class),
             ]);
     }
 
@@ -138,11 +144,12 @@ class UserResource extends Resource
         ];
     }
 
-    private static function getCarsSelectOptions()
+    private static function getCarsSelectOptions(): Collection
     {
+        /** @var User $user */
         $user = Auth::user();
 
-        $query = $user->isAdmin() ? Car::query() : Filament::getTenant()->cars();
+        $query = $user->isAdmin() ? Car::query() : $user->organization->cars();
 
         return $query->with('brand')->get()->mapWithKeys(fn ($car) => [
             $car->id => "{$car->brand->name} {$car->specs['model']} {$car->specs['year']}",
