@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Generate docs using phpDocumentor
-docker run --rm -v $(pwd):/data phpdoc/phpdoc -d /data/app -t /data/storage/app/docs -s template.color=blue
+docker run --rm -v "$(pwd):/data" phpdoc/phpdoc -d /data/app -t /data/storage/app/docs -s template.color=blue
 
 sudo chown -R $USER:$USER storage/app/docs
 
