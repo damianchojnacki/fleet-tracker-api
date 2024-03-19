@@ -19,10 +19,7 @@ class CarResource extends JsonResource
         return [
             'id' => $this->id,
             'brand_id' => $this->brand_id,
-            'plate_number' => $this->plate_number,
-            'vin' => $this->vin,
             'mileage' => $this->mileage,
-            'color' => $this->color,
             'is_active' => $this->is_active,
             'specs' => $this->specs,
             'brand' => new CarBrandResource($this->whenLoaded('brand')),

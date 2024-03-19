@@ -38,8 +38,6 @@ class CarResource extends Resource
             ->schema([
                 Toggle::make('is_active')
                     ->default(true),
-                TextInput::make('plate_number'),
-                TextInput::make('vin'),
                 TextInput::make('mileage')
                     ->numeric()
                     ->minValue(0),
@@ -48,6 +46,8 @@ class CarResource extends Resource
                     ->searchable(['name'])
                     ->preload()
                     ->required(),
+                TextInput::make('specs.vin'),
+                TextInput::make('specs.plate_number'),
                 TextInput::make('specs.year')
                     ->numeric()
                     ->step(1)

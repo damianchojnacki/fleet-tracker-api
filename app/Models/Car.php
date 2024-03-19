@@ -10,8 +10,6 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 /**
  * @property int $id
- * @property string|null $plate_number
- * @property string|null $vin
  * @property int|null $mileage
  * @property string|null $color
  * @property array<string,int|float|string> $specs

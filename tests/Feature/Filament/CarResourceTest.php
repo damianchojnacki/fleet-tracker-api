@@ -74,13 +74,11 @@ class CarResourceTest extends FilamentTestCase
             ->call('create')
             ->assertHasNoFormErrors();
 
-        $car = Car::firstWhere('plate_number', $data['plate_number']);
+        $car = Car::firstWhere('specs->plate_number', $data['specs']['plate_number']);
 
         $this->assertNotNull($car);
 
         $this->assertEquals($data['brand_id'], $car->brand->id);
-        $this->assertEquals($data['vin'], $car->vin);
-        $this->assertEquals($data['plate_number'], $car->plate_number);
         $this->assertEquals($data['specs'], $car->specs);
         $this->assertEquals($data['mileage'], $car->mileage);
         $this->assertEquals($data['is_active'], $car->is_active);
@@ -107,8 +105,6 @@ class CarResourceTest extends FilamentTestCase
         $car = $car->fresh();
 
         $this->assertEquals($data['brand_id'], $car->brand->id);
-        $this->assertEquals($data['vin'], $car->vin);
-        $this->assertEquals($data['plate_number'], $car->plate_number);
         $this->assertEquals($data['specs'], $car->specs);
         $this->assertEquals($data['mileage'], $car->mileage);
         $this->assertEquals($data['is_active'], $car->is_active);
