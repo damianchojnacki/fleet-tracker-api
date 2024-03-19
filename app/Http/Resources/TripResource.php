@@ -24,6 +24,7 @@ class TripResource extends JsonResource
             'from' => $this->from,
             'to' => $this->to,
             'is_finished' => $this->is_finished,
+            'starts_at' => $this->starts_at,
             'points' => TripPointResource::collection($this->whenLoaded('points')),
             'car' => new CarResource($this->whenLoaded('car')),
         ];

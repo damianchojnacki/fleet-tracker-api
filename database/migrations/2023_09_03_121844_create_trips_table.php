@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('from')->nullable();
             $table->string('to')->nullable();
             $table->string('note')->nullable();
+            $table->timestamp('starts_at');
             $table->timestamps();
         });
     }

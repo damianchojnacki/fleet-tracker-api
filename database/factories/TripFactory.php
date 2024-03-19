@@ -29,6 +29,7 @@ class TripFactory extends Factory
             'note' => $this->faker->paragraph(rand(0, 2)),
             'from' => $this->faker->sentence(),
             'to' => $this->faker->sentence(),
+            'starts_at' => now()->subHours(rand(0, 720))->subSeconds(rand(0, 3600)),
         ];
     }
 }

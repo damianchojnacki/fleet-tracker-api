@@ -107,6 +107,7 @@ class UserTripControllerTest extends TestCase
         $this->assertEquals($body->from, $trip->from);
         $this->assertEquals($body->to, $trip->to);
         $this->assertEquals($body->distance, $trip->distance);
+        $this->assertEquals($body->starts_at->toDateTimeString(), $trip->starts_at->toDateTimeString());
     }
 
     public function testUserCanNotCreateTripToCarThatDoesNotBelongs(): void
@@ -151,6 +152,7 @@ class UserTripControllerTest extends TestCase
         $this->assertEquals($body->from, $trip->from);
         $this->assertEquals($body->to, $trip->to);
         $this->assertEquals($body->distance, $trip->distance);
+        $this->assertEquals($body->starts_at->toDateTimeString(), $trip->starts_at->toDateTimeString());
     }
 
     public function testUserCanNotUpdateTripThatDoesNotBelongs(): void

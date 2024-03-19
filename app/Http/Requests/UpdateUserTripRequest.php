@@ -27,6 +27,7 @@ class UpdateUserTripRequest extends FormRequest
             'to' => ['nullable', 'string', 'max:255'],
             'note' => ['nullable', 'string', 'max:255'],
             'distance' => ['nullable', 'numeric', 'min:0'],
+            'starts_at' => ['date'],
         ];
     }
 }
