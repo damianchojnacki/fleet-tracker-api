@@ -8,7 +8,6 @@ class CarStruct
         public int $city_mpg,
         public string $class,
         public int $combination_mpg,
-        public int $cylinders,
         public float $displacement,
         public string $drive,
         public string $fuel_type,
@@ -17,6 +16,7 @@ class CarStruct
         public string $model,
         public string $transmission,
         public int $year,
+        public ?int $cylinders = null,
     ) {
     }
 }
