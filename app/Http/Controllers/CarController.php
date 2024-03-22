@@ -22,6 +22,7 @@ class CarController extends Controller
             )
             ->with('brand')
             ->where('id', '!=', $request->user()?->car_id)
+            ->where('is_active', true)
             ->get();
 
         return CarResource::collection($cars);
