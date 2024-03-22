@@ -16,9 +16,13 @@ class CarController extends Controller
      */
     public function index(Request $request): AnonymousResourceCollection
     {
-        $cars = Car::whereHas('organization',
-            fn (Builder $q) => $q->where('id', $request->user()?->organization?->id)
-        )->with('brand')->get();
+        $cars = Car::query()
+            ->whereHas('organization',
+                fn (Builder $q) => $q->where('id', $request->user()?->organization?->id)
+            )
+            ->with('brand')
+            ->where('id', '!=', $request->user()?->car_id)
+            ->get();
 
         return CarResource::collection($cars);
     }
