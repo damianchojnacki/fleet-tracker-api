@@ -20,7 +20,7 @@ class UserTripController extends Controller
      */
     public function index(Request $request): AnonymousResourceCollection
     {
-        $trips = $request->user()->trips()->with('car')->get();
+        $trips = $request->user()->trips()->with('car.brand')->get();
 
         return TripResource::collection($trips);
     }
