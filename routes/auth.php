@@ -16,7 +16,7 @@ Route::group([
         ->name('register');
 
     Route::post('/login', [AuthenticatedSessionController::class, 'store'])
-        ->middleware('throttle:6,1')
+        ->middleware('throttle:10,1')
         ->name('login');
 
     Route::post('/forgot-password', [PasswordResetLinkController::class, 'store'])
