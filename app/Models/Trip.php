@@ -24,7 +24,7 @@ class Trip extends Model
     use HasFactory;
 
     protected $casts = [
-        'starts_at' => 'datetime'
+        'starts_at' => 'datetime',
     ];
 
     public function user(): BelongsTo
