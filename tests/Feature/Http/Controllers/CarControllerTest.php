@@ -23,7 +23,9 @@ class CarControllerTest extends TestCase
             'organization_id' => $organization->id,
         ]);
 
-        Car::factory()->recycle($organization)->count(3)->create();
+        Car::factory()->recycle($organization)->count(3)->create([
+            'is_active' => true,
+        ]);
 
         Car::factory()->count(3)->create();
 
