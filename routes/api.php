@@ -28,7 +28,7 @@ Route::group([
     Route::apiResource('cars', CarController::class)
         ->only('index', 'show');
 
-    Route::apiResource('cars.operations', CarOperationController::class);
+    Route::apiResource('cars.operations', CarOperationController::class)->except('show');
 
     Route::put('organization-invitations/{invitation}', [OrganizationInvitationController::class, 'accept'])
         ->name('organization-invitations.accept')
