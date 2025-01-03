@@ -27,6 +27,38 @@
 
 ## About Fleet Tracker API
 
+A fleet management system with features for:
+
+- **User Management**
+    - Authentication and registration with email verification
+    - Organization-based user grouping with invitations
+    - Rich admin panel
+
+- **Vehicle Management**
+    - Car tracking with brand, mileage, and specifications
+    - Operations logging (refueling, maintenance, repairs)
+    - Cost tracking for all vehicle operations
+
+- **Trip Management**
+    - Trip recording with start/end locations
+    - Distance tracking
+    - GPS point logging during trips
+    - Trip notes and timestamps
+
+- **Communication**
+    - Internal chat system between users
+
+The API follows RESTful principles with comprehensive error handling for validation, authorization, and resource availability.
+
+### Tech stack:
+- PHP 8.3 + Laravel 11
+- Tests - PHPUnit 
+- Static analysis - PHPStan
+- Admin panel - FilamentPHP
+- Docs - phpDocumentor
+- API Docs - Scramble
+- CI - Github Actions
+
 ## Setup
 
 Use the following commands to setup the project:
@@ -37,16 +69,6 @@ chmod +x setup.sh
 ```
 
 Optionally you can follow the official [Laravel installation guide](https://laravel.com/docs/10.x/installation).
-
-By default, database use temporary filesystem (that wipes up data every reboot) to speed up the development. 
-To use persistence database, you can must comment the following lines in the end of `docker-compose.yml` file:
-
-```yaml
-driver_opts:
-    o: bind
-    type: none
-    device: '/dev/shm'
-```
 
 ## Usage
 
@@ -76,11 +98,19 @@ sail npm run dev
 
 Please refer to official Laravel documentation for more information about [Sail](https://laravel.com/docs/10.x/sail).
 
+### Admin panel
+
+Admin panel is available on `/admin`. 
+- Default email - `admin@example.com`
+- Default password - `password`
+
 ### Documentation
 
 Documentation is available on `/docs`.
 
 API Documentation is available on `/docs/api`. 
+
+> On non-local environments documentation is accessible only for admin users.
 
 #### Generating documentation
 
@@ -91,6 +121,12 @@ Documentation is generated using [phpDocumentor](https://www.phpdoc.org/). To ge
 ```
 
 API Documentation is generated automatically thanks to Scramble.
+
+### CI 
+
+After pushing changes to repository, CI tests projects, 
+generates code coverage and code insights labels and deploys 
+app to fly.io.
 
 ## License
 
