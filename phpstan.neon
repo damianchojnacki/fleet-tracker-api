@@ -12,7 +12,8 @@ parameters:
 #    excludePaths:
 #            - ./*/*/TeacherFacade.php
 
-    checkGenericClassInNonGenericObjectType: false
+    ignoreErrors:
+      - identifier: missingType.generics
 
     editorUrl: 'phpstorm://open?file=%%file%%&line=%%line%%'
     editorUrlTitle: '%%relFile%%:%%line%%'
