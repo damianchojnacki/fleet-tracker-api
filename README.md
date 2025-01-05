@@ -67,13 +67,8 @@ Use the following commands to setup the project:
 chmod +x setup.sh
 ./setup.sh
 ```
+
 Optionally you can follow the official [Laravel installation guide](https://laravel.com/docs/10.x/installation).
-
-After setup, you may want to migrate and seed database:
-
-```shell
-sail artisan migrate --seed
-```
 
 ## Usage
 
