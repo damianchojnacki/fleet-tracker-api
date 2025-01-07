@@ -46,7 +46,7 @@ else
     echo -e "${WHITE}Thank you!"
 fi
 
-./vendor/bin/sail up -d
+./vendor/bin/sail up -d --wait
 
 ./vendor/bin/sail artisan storage:link
 
@@ -54,5 +54,10 @@ fi
 
 ./vendor/bin/sail --help
 
-echo "Please add alias to .bashrc or .profile to easily run sail:"
+echo ""
+echo -e "${CYAN}Congratulations!"
+echo "You can visit the appliaction on http://localhost."
+echo ""
+
+echo -e "${WHITE}Please add alias to .bashrc or .profile to easily run sail:"
 echo "alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'"
